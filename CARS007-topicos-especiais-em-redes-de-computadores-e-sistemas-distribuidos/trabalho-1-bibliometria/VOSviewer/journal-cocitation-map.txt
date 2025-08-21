@@ -1,0 +1,760 @@
+﻿id	label	x	y	cluster	weight<Links>	weight<Total link strength>	weight<Citations>
+539	13th usenix symposium on networked systems design and implementation (nsdi '16)	0.5178	0.2707	2	375	1934	57
+2783	2014 ieee world forum on internet of things (wf-iot)	0.3233	-0.3217	2	564	5044	97
+2832	2014 international conference on future internet of things and cloud (ficloud)	0.5197	-0.5023	2	517	5252	85
+3084	2015 ieee 2nd world forum on internet of things (wf-iot)	0.3975	-0.3255	2	626	9009	145
+3104	2015 ieee 8th international conference on cloud computing	0.703	-0.1348	2	498	3941	74
+3119	2015 ieee conference on computer communications (infocom). proceedings	0.8345	0.032	2	535	5835	126
+3171	2015 ieee international conference on pervasive computing and communication workshops (percom workshops)	0.5614	-0.2913	2	459	3613	60
+3388	2015 third ieee workshop on hot topics in web systems and technologies (hotweb)	0.5551	-0.3753	2	565	5951	101
+3471	2016 23rd international conference on telecommunications (ict)	0.684	-0.188	2	535	4921	88
+3585	2016 first ieee/acm symposium on edge computing (sec 2016)	0.8039	-0.0911	2	569	10530	121
+3624	2016 ieee 3rd world forum on internet of things (wf-iot)	0.1129	-0.2352	2	582	5191	110
+3656	2016 ieee conference on computer communications: workshops (infocom wkshps)	0.9961	-0.3166	2	361	2685	50
+3729	2016 ieee international conference on smart cloud (smartcloud)	0.4402	-0.2142	2	557	4481	90
+4195	2017 global internet of things summit (giots 2017)	0.3401	-0.3674	2	615	7761	114
+4223	2017 ieee 1st international conference on edge computing (ieee edge)	0.8859	-0.42	2	576	8743	166
+4224	2017 ieee 1st international conference on fog and edge computing (icfec)	0.9188	-0.5621	2	509	9359	121
+4243	2017 ieee 28th annual international symposium on personal	0.7948	-0.2413	2	574	6295	103
+4465	2017 ifip/ieee symposium on integrated network and service management (im)	0.673	-0.4811	2	554	6072	98
+4642	2017 second international conference on fog and mobile edge computing (fmec)	0.8442	-0.6312	2	545	8070	129
+5055	2018 ieee 4th world forum on internet of things (wf-iot)	0.5247	-0.4263	2	550	5938	104
+5117	2018 ieee int c comm	1.2056	-0.3871	2	437	3855	62
+5163	2018 ieee international conference on edge computing (ieee edge)	0.7354	-0.0282	2	581	7646	140
+5224	2018 ieee smartworld	0.4736	-0.0128	2	548	4878	65
+5443	2018 third ieee/acm symposium on edge computing (sec)	0.6792	0.2382	2	669	18976	297
+5445	2018 third international conference on fog and mobile edge computing (fmec)	0.8699	-0.5984	2	451	4889	61
+5831	2019 ieee 5th world forum on internet of things (wf-iot)	-0.0414	-0.4815	1	488	3323	73
+5914	2019 ieee international conference on blockchain (blockchain 2019)	0.2099	-0.8009	2	465	4597	81
+5923	2019 ieee international conference on edge computing (ieee edge)	0.584	-0.1571	2	532	4738	89
+5950	2019 ieee international conference on web services (ieee icws 2019)	1.1127	0.0008	2	396	3150	79
+7241	2021 ieee/cvf international conference on computer vision (iccv 2021)	-0.3266	1.0024	3	432	5799	89
+10546	aaai conf artif inte	0.0499	0.8571	3	722	46237	814
+10604	about us	-0.1337	-0.0301	2	699	26270	567
+10746	accident anal prev	-0.4475	0.2476	1	385	4292	65
+10802	acm comput surv	0.2991	-0.0655	2	757	134434	2073
+10868	acm j emerg tech com	-0.5963	0.5448	3	463	3262	54
+10900	acm s theory comput	0.4213	0.3552	2	450	3297	62
+10921	acm sigcomm comp com	0.6176	-0.0557	2	729	38890	839
+10971	acm sigplan notices	0.1837	0.524	2	675	13776	258
+10995	acm t comput syst	0.6573	-0.0814	2	494	4181	105
+11002	acm t embed comput s	-0.3067	0.4048	3	695	14700	258
+11005	acm t graphic	-0.272	0.6047	3	391	3002	59
+11012	acm t intel syst tec	0.1429	0.607	3	716	21222	374
+11015	acm t internet techn	0.4547	-0.5734	2	712	27487	496
+11016	acm t internet thing	0.0224	0.0017	1	539	5426	77
+11017	acm t knowl discov d	-0.1694	0.2601	1	446	2584	64
+11020	acm t multim comput	0.1302	0.4042	1	643	9547	175
+11028	acm t sensor network	0.2288	0.2332	2	693	15930	380
+11037	acm trans cyber-phys	-0.0717	0.0877	1	565	4728	80
+11149	acs appl mater inter	-1.4556	0.71	3	295	6495	94
+11156	acs nano	-1.3842	0.6701	3	379	9338	124
+11165	acsis-ann comput sci	0.5579	-0.481	2	555	6314	104
+11299	ad hoc netw	0.1892	-0.5229	1	750	54958	1068
+11329	adapt comput mach le	0.5159	0.7305	4	661	15428	294
+11489	adv comput	-0.1193	-0.3341	1	534	3992	67
+11556	adv electron mater	-1.4057	0.8221	3	190	3466	64
+11559	adv eng inform	-0.7302	-0.534	1	587	10668	186
+11561	adv eng softw	-0.0423	-0.737	1	466	4143	89
+11567	adv funct mater	-1.4465	0.7401	3	331	7385	120
+11603	adv intell syst	-0.109	-0.4179	1	674	10221	182
+11604	adv intell syst comp	-0.3229	-0.2878	1	571	4809	94
+11618	adv mater	-1.4666	0.7677	3	378	12964	194
+11642	adv neur in	0.0322	0.8739	3	744	75107	1383
+11650	adv neural inform pr	-0.0714	0.7493	3	617	7823	149
+11990	advances in neural information processing systems	-0.0431	0.8898	3	645	16063	285
+12076	aeu-int j electron c	-0.3376	0.227	3	463	4180	91
+12188	agriculture-basel	-0.9105	-0.3301	1	359	4323	79
+12203	agronomy-basel	-0.8483	-0.3752	1	404	3748	61
+12333	aip conf proc	-0.4388	-0.2046	1	551	3804	69
+12413	alex eng j	-0.6424	-0.2942	1	610	8510	154
+12445	algorithms	-0.261	-0.2742	1	615	6531	98
+13078	ann allerton conf	0.5982	0.7412	4	407	3065	67
+13130	ann ieee symp found	0.6542	0.4856	2	417	3226	72
+13156	ann oper res	-0.3251	-0.3085	1	563	4475	85
+13175	ann telecommun	0.4158	-0.6433	2	605	7523	140
+13408	appl acoust	-0.74	0.1923	1	362	2527	70
+13450	appl energ	-0.988	-0.4342	1	699	28630	436
+13477	appl intell	-0.4316	0.0283	1	642	10362	221
+13487	appl math comput	-0.103	-0.0568	1	462	3232	82
+13523	appl phys lett	-1.4733	0.8276	3	283	9771	132
+13549	appl sci-basel	-0.5591	-0.3543	1	749	76982	1323
+13553	appl soft comput	-0.3602	-0.2491	1	734	31514	649
+13767	arab j sci eng	-0.2803	-0.5845	1	610	6722	130
+13790	arch comput method e	-0.5511	-0.4081	1	577	6556	111
+14011	artif intell	-0.2813	-0.071	1	536	3542	90
+14019	artif intell med	-0.6838	0.1147	1	469	2986	61
+14020	artif intell rev	-0.4711	0.0962	1	704	14093	243
+14125	arxiv	-0.0042	0.6704	3	758	405113	6945
+14179	arxiv preprint arxiv	-0.0213	0.2192	1	680	16334	297
+15360	asia s pacif des aut	-0.5268	0.6336	3	519	6083	99
+15371	asia-pac netw oper m	0.772	-0.3385	2	557	6270	113
+15724	automat constr	-0.7035	-0.3219	1	605	10956	273
+15764	automatica	-0.1694	0.3092	1	437	4097	115
+16438	big data internet th	0.5549	-0.3626	2	582	6791	127
+16440	big data min anal	0.1334	0.0859	1	453	5256	131
+16451	big data res	-0.1944	-0.1414	1	538	3437	51
+16599	biomed signal proces	-0.6909	0.1679	1	509	6149	136
+16647	biosens bioelectron	-1.2238	0.4318	3	335	3899	51
+16656	biosyst eng	-0.6783	-0.3315	1	467	5395	110
+16692	bitcoin peer to peer	0.6447	-0.2004	2	343	1859	51
+16695	bitcoin: a peer-to-peer electronic cash system	-0.0734	-0.5414	1	488	4015	85
+16949	bmc bioinformatics	-0.4067	0.1302	1	428	2248	55
+17238	build environ	-0.7862	-0.244	1	488	5784	120
+17352	bus horizons	-0.3714	-0.4987	1	577	4686	82
+17353	bus inform syst eng+	-0.1978	-0.3733	1	556	4163	63
+17448	c local comput netw	0.6982	-0.0782	2	644	9497	198
+17495	caai t intell techno	-0.4164	-0.1088	1	478	3525	65
+17579	can con el comp en	-0.2412	-0.3156	1	508	3206	51
+17825	ccs'15: proceedings of the 22nd acm sigsac conference on computer and communications security	0.1556	0.429	2	546	5097	98
+17826	ccs'16: proceedings of the 2016 acm sigsac conference on computer and communications security	0.3742	0.3866	2	547	6046	110
+17827	ccs'17: proceedings of the 2017 acm sigsac conference on computer and communications security	0.2868	0.5893	2	571	7172	136
+18004	chaos soliton fract	-0.7155	0.0984	1	426	5200	76
+18133	chin contr conf	-0.3419	-0.1784	1	498	2955	56
+18194	china commun	1.0985	-0.3236	4	741	54697	970
+18303	chinese j electron	0.5294	0.4984	2	521	5934	154
+18442	cirp ann-manuf techn	-0.7021	-0.6203	1	458	5282	73
+18475	cisc vis netw ind gl	0.818	-0.0761	2	618	12012	225
+18553	cit/iucc/dasc/picom 2015 ieee international conference on computer and information technology - ubiquitous computing and communications - dependable	0.4697	-0.456	2	526	5032	69
+18558	cities	-0.4373	-0.4115	1	518	4033	75
+18906	cluster comput	-0.0514	-0.7944	1	743	57987	1039
+18927	cmc-comput mater con	-0.2869	-0.3985	1	683	15653	385
+19181	comm com inf sc	-0.0748	-0.3172	1	703	11686	219
+19234	commun acm	0.1261	0.1947	2	755	43382	902
+19485	complex intell syst	-0.4135	-0.5039	1	623	8139	144
+19492	complexity	-0.3149	-0.4729	1	634	7896	166
+19551	comput biol med	-0.7272	0.1519	1	408	4978	97
+19559	comput commun	0.301	-0.6802	5	758	128421	2178
+19573	comput electr eng	-0.2465	-0.5595	1	749	46581	815
+19574	comput electron agr	-0.6586	-0.2873	1	659	28878	588
+19588	comput hum behav	-0.5834	-0.2013	1	483	3479	68
+19589	comput ind	-0.5312	-0.6521	1	698	20889	311
+19590	comput ind eng	-0.5794	-0.4314	1	695	14497	278
+19594	comput intel neurosc	-0.6314	-0.2157	1	615	7494	173
+19599	comput j	0.2349	-0.1941	2	614	7275	194
+19612	comput meth prog bio	-0.6528	0.1329	1	532	4268	99
+19619	comput netw	0.3753	-0.6406	2	758	180772	3144
+19624	comput oper res	-0.0319	-0.1928	1	518	4066	106
+19637	comput sci eng	-0.1399	0.0906	2	435	2764	55
+19638	comput sci inf syst	0.1188	-0.3109	1	414	2655	52
+19642	comput sci rev	-0.2797	-0.7094	1	674	14835	215
+19645	comput secur	0.009	-0.5611	1	721	40438	731
+19651	comput stand inter	0.2434	-0.6586	2	659	12332	199
+19665	comput vis image und	-0.304	0.4491	1	445	2917	64
+19676	comput-aided civ inf	-0.7221	0.1922	1	391	3395	75
+19805	computer	0.2984	-0.1107	2	757	70799	1408
+19973	computers	-0.499	-0.3474	1	608	6459	111
+19997	computing	0.0957	-0.6921	1	683	17074	286
+20064	concurr comp-pract e	0.1959	-0.6199	1	743	34049	617
+20105	conf proc int symp c	-0.3317	0.7498	3	545	6374	139
+20107	conf rec asilomar c	0.3976	0.8074	4	500	5729	91
+20262	consum comm network	0.4334	-0.2209	2	689	15575	230
+20359	continuous control with deep reinforcement learning	1.2704	1.0828	4	287	2383	56
+20453	convex optimization	1.5699	0.8348	4	488	11286	331
+20545	corr	0.3545	0.1794	2	620	9402	172
+21131	cvx: matlab software for disciplined convex programming	1.9739	0.9198	4	220	2502	68
+21505	data min knowl disc	-0.1812	0.354	1	371	1735	52
+21763	decis support syst	-0.1028	-0.3165	1	572	4542	100
+22119	des aut con	-0.4791	0.5224	3	679	13324	242
+22120	des aut test europe	-0.4605	0.6208	3	660	14207	258
+22468	digit commun netw	0.1197	-0.6813	1	747	45376	789
+22477	digit signal process	-0.494	0.3994	1	459	3152	68
+23178	drones-basel	-0.1341	-0.9621	4	526	13690	170
+23393	eai springer innovat	0.0129	-0.568	1	527	4975	73
+23570	econometrica	0.9359	0.3717	4	348	2593	59
+23949	egypt inform j	-0.2194	-0.769	1	439	3603	70
+24081	electr pow syst res	-1.0816	-0.6609	1	435	9296	105
+24134	electron lett	-0.467	0.5221	3	544	5654	136
+24173	electronics-switz	-0.4777	-0.2907	1	755	81663	1480
+24558	energ buildings	-0.802	-0.4919	1	553	9680	206
+24560	energ convers manage	-0.9926	-0.3624	1	426	6337	92
+24567	energ policy	-0.8376	-0.626	1	368	3194	54
+24572	energies	-0.8405	-0.5467	1	725	40678	672
+24573	energy	-0.9396	-0.4838	1	616	13097	220
+24660	energy rep	-0.9923	-0.6396	1	458	8373	109
+24690	eng appl artif intel	-0.602	-0.1519	1	726	21883	385
+24726	eng sci technol	-0.5933	-0.6007	1	473	3590	54
+24731	eng struct	-0.9648	0.1453	1	219	1884	52
+24781	engineering-prc	-0.5837	-0.0212	1	586	7339	112
+24825	enrgy proced	-0.9815	-0.4766	1	411	3057	59
+24850	enterp inf syst-uk	-0.2813	-0.7021	1	591	8444	149
+24869	entropy-switz	-0.2529	-0.1178	1	646	8319	146
+24923	environ sci pollut r	-0.8413	-0.4203	1	364	2439	63
+25346	eur conf netw commun	1.0688	-0.529	4	581	11954	128
+25392	eur j oper res	-0.1617	-0.1563	1	648	9454	237
+25435	eur signal pr conf	-0.1464	0.3554	1	448	2245	53
+25468	eurasip j adv sig pr	0.1674	0.2197	1	478	3139	68
+25478	eurasip j wirel comm	0.5845	-0.5568	4	729	31048	532
+25510	euromicro workshop p	0.3156	-0.0021	2	468	2714	54
+25587	eurosys 11: proceedings of the eurosys 2011 conference	0.8577	0.0786	2	430	3343	90
+25784	expert syst	-0.6958	-0.1396	1	488	3444	62
+25785	expert syst appl	-0.4311	-0.0873	1	748	49507	1011
+26887	found trends mach le	0.3691	0.8343	3	576	7268	153
+26891	found trends theor c	-0.0832	0.5013	2	422	2713	50
+27082	front comput sci-chi	0.1712	-0.1702	2	509	3942	82
+27104	front inform tech el	-0.0926	-0.3454	1	540	4618	83
+27121	front neurosci-switz	-0.8863	0.6851	3	426	3821	93
+27329	future gener comp sy	0.2443	-0.54	2	758	363439	6804
+27330	future gener comput	0.3473	-0.3426	2	381	2383	56
+27349	future internet	-0.1568	-0.4689	1	747	37080	559
+27465	game econ behav	1.4163	0.1216	2	299	2382	67
+27983	glob telecomm conf	0.5683	0.1522	4	443	3392	72
+29118	heliyon	-0.671	-0.3866	1	587	5973	90
+29230	high-confid comput	-0.1063	-0.1674	1	448	3654	56
+29608	hum-cent comput info	-0.002	-0.5857	1	586	6491	136
+29785	i c comp syst applic	0.2939	-0.4164	2	501	3735	74
+29790	i c depend sys netwo	0.2822	0.1302	2	451	2924	64
+29798	i c inf comm tech co	0.7583	-0.2225	4	652	12045	196
+29803	i c network protocol	0.7821	0.2614	2	524	5042	97
+29837	i s world wirel mobi	0.8774	-0.0164	2	518	5236	93
+29842	i symp consum electr	0.0299	-0.6584	1	500	3509	59
+29843	i sympos low power e	-0.205	0.4746	3	460	2931	61
+30051	iccad-ieee acm int	-0.5286	0.6266	3	596	7254	109
+30280	ict express	-0.2164	-0.5405	1	686	15970	267
+30472	ieee 2018 international congress on cybermatics / 2018 ieee conferences on internet of things	0.3813	-0.5619	2	432	3575	69
+30554	ieee access	0.1384	-0.3796	1	758	1028526	18021
+30562	ieee acm int symp	0.6585	-0.324	2	618	8265	149
+30566	ieee acm t comput bi	-0.4127	-0.0003	1	567	4743	106
+30569	ieee acm t network	1.0557	0.3129	2	742	107484	2406
+30585	ieee antenn wirel pr	-0.551	0.6898	3	351	3978	85
+30619	ieee c evol computat	-0.0855	-0.2402	1	546	4952	104
+30636	ieee circ syst mag	-0.6779	0.5541	3	477	3151	62
+30640	ieee cloud comput	0.6102	-0.5113	2	722	33991	577
+30649	ieee commun lett	1.3264	0.4645	4	745	98983	1911
+30650	ieee commun mag	0.809	-0.1774	2	758	353798	6504
+30654	ieee commun surv tut	0.7997	-0.1225	4	758	506564	8262
+30675	ieee communications standards magazine	0.8757	-0.0728	4	667	19642	267
+30686	ieee comput intell m	-0.0133	0.4316	3	600	6016	108
+30689	ieee comput soc conf	-0.3563	0.7627	3	565	9852	178
+30707	ieee conf comm netw	0.4461	-0.1597	2	499	4088	77
+30709	ieee conf comput	1.0622	0.0662	2	721	35785	650
+30716	ieee conf wirel mob	0.2922	-0.3286	2	562	6151	115
+30729	ieee consum electr m	0.1864	-0.296	2	741	30013	585
+30751	ieee data mining	-0.0973	0.5209	3	529	4859	104
+30754	ieee decis contr p	0.078	0.2982	1	534	4798	104
+30756	ieee des test	-0.5387	0.4894	3	476	2973	58
+30771	ieee electr device l	-1.4308	0.8725	3	242	7950	112
+30779	ieee embed syst lett	-0.4283	0.5133	3	430	2579	50
+30786	ieee eng med bio	-0.606	0.3007	1	612	9057	185
+30806	ieee geosci remote s	-0.5455	0.2557	1	437	3287	74
+30812	ieee glob comm conf	1.1114	-0.041	4	747	95140	1579
+30827	ieee global communic	1.2791	0.1863	4	415	3523	53
+30835	ieee globe work	1.0757	0.0277	4	693	20478	314
+30862	ieee i conf comp vis	-0.2609	0.8885	3	713	31617	625
+30864	ieee ic comp com net	0.6253	-0.1072	2	569	6204	120
+30867	ieee icc	0.9651	0.1235	4	755	105784	1843
+30890	ieee ifip netw oper	0.7612	-0.4542	2	583	8273	123
+30892	ieee ijcnn	-0.4497	0.4852	3	695	15126	247
+30893	ieee image proc	-0.2126	0.6618	3	592	8022	182
+30895	ieee imtc p	-0.3174	0.1069	1	516	3924	71
+30899	ieee ind elec	-0.2365	-0.3487	1	621	6905	111
+30900	ieee ind electron m	-0.523	-0.4675	1	619	8711	162
+30902	ieee infocom	1.0589	-0.0867	2	453	3809	89
+30923	ieee infocom 2019 - ieee conference on computer communications	1.2616	0.2693	2	337	2877	59
+30938	ieee infocom ser	0.8186	0.492	2	746	125254	3011
+30975	ieee int c communica	1.2871	-0.0898	4	582	10322	158
+31003	ieee int c emerg	-0.2267	-0.6736	1	543	6542	116
+31024	ieee int c int robot	-0.1198	0.6602	3	539	5757	89
+31026	ieee int c intell tr	-0.1301	0.4511	1	590	8255	147
+31070	ieee int con multi	0.0596	0.5729	3	515	3579	57
+31078	ieee int conf big da	0.0117	0.1162	2	718	17054	284
+31079	ieee int conf cl net	0.9349	-0.4256	2	588	9511	153
+31080	ieee int conf cloud	0.6461	-0.2859	2	633	10305	189
+31081	ieee int conf comm	1.0766	0.1415	4	706	24599	375
+31082	ieee int conf commun	1.4662	-0.0321	4	562	12469	197
+31086	ieee int conf distr	-0.0757	0.0469	1	597	5256	91
+31101	ieee int conf mob	0.4609	-0.0483	2	656	8982	156
+31102	ieee int conf mob cl	0.8747	-0.3808	2	568	8472	147
+31110	ieee int conf robot	-0.1232	0.7397	3	597	12478	159
+31111	ieee int conf sens	0.5985	0.0783	2	567	5280	96
+31113	ieee int conf serv	0.4723	-0.4309	2	514	3996	74
+31116	ieee int conf trust	0.3632	0.1095	2	466	3486	70
+31119	ieee int congr big	0.2588	-0.071	2	505	3249	69
+31170	ieee int symp circ s	-0.6318	0.6156	3	640	10766	188
+31174	ieee int symp info	1.0999	0.6499	4	588	15252	357
+31177	ieee int symp paral	0.4193	-0.0191	2	592	7757	126
+31190	ieee int veh sym	-0.0817	0.6096	3	585	8168	119
+31193	ieee int work sign p	1.4719	0.5347	4	501	8597	123
+31201	ieee int worksh comp	0.6782	-0.5129	2	548	6059	84
+31220	ieee intel transp sy	0.0282	0.1765	1	560	6059	115
+31221	ieee intell syst	0.0975	0.1813	2	693	13756	207
+31267	ieee internet comput	0.4615	-0.4785	2	742	38187	661
+31274	ieee internet of things journal	0.6231	-0.8233	4	526	5993	91
+31277	ieee internet of things magazine	-0.0208	-0.7413	1	637	13188	210
+31280	ieee internet things	0.6591	0.0143	4	758	1309905	27743
+31281	ieee internet things j	0.0697	-1.0951	4	429	5356	72
+31282	ieee internet things j.	0.8088	-0.3811	4	507	6202	105
+31290	ieee intl conf ind i	-0.3256	-0.5885	1	536	6082	103
+31297	ieee ipccc	0.5946	0.0632	2	500	3614	65
+31304	ieee j biomed health	-0.5795	0.1983	1	701	19017	417
+31310	ieee j em sel top c	-0.7274	0.6113	3	608	7298	129
+31324	ieee j sel area comm	1.2363	0.4378	4	756	312470	6241
+31331	ieee j solid-st circ	-0.9196	0.7307	3	554	16049	334
+31333	ieee j-stars	-0.6371	0.2364	1	507	6269	114
+31334	ieee j-stsp	0.6279	0.8861	4	696	22334	429
+31357	ieee lat am t	-0.493	-0.4807	1	490	3192	79
+31371	ieee micro	-0.6002	0.6969	3	544	6919	121
+31376	ieee milit commun c	0.6231	-0.1521	2	605	7323	125
+31384	ieee multimedia	0.166	0.3851	3	512	5783	84
+31399	ieee network	0.8218	0.0801	4	756	271516	4739
+31400	ieee networking letters	1.1325	0.4791	4	465	4994	86
+31412	ieee open j comm soc	1.2126	-0.0677	4	667	23756	273
+31414	ieee open j comp soc	0.5464	0.6155	4	553	8542	110
+31423	ieee open j veh tech	1.6851	0.0511	4	416	5745	72
+31450	ieee pervas comput	0.4717	-0.0456	2	744	32982	616
+31467	ieee potentials	0.3957	-0.3909	2	493	3508	58
+31502	ieee robot autom let	-0.2696	0.4097	3	600	8714	128
+31527	ieee secur priv	0.1263	-0.4302	2	639	9781	162
+31532	ieee sens j	-0.6545	0.0803	1	757	81190	1568
+31535	ieee sensor	-0.3872	0.1544	1	551	3474	78
+31536	ieee sensor lett	-0.6887	0.0935	1	469	3712	58
+31550	ieee signal proc let	-0.0216	0.6993	4	633	10539	239
+31551	ieee signal proc mag	0.1871	0.6876	3	743	30798	523
+31562	ieee software	0.1438	-0.4454	2	608	7397	161
+31573	ieee spectrum	-0.469	0.2458	3	573	4987	79
+31651	ieee symp comp commu	0.3723	-0.4197	2	651	9863	198
+31660	ieee sys man cybern	-0.0807	-0.2106	1	664	8949	169
+31661	ieee syst j	0.2823	-0.6808	4	752	74304	1433
+31673	ieee t aero elec sys	0.4161	0.9548	4	482	8049	179
+31676	ieee t affect comput	-0.4171	0.4429	1	336	1984	52
+31677	ieee t antenn propag	-0.4598	0.6789	3	497	8299	150
+31683	ieee t autom sci eng	-0.2782	0.022	1	665	14596	333
+31684	ieee t automat contr	0.1058	0.3372	1	630	11633	283
+31687	ieee t big data	0.2201	0.2866	2	651	10740	202
+31688	ieee t bio-med eng	-0.7149	0.3873	1	575	8769	214
+31690	ieee t biomed circ s	-0.7095	0.4846	3	482	5139	120
+31691	ieee t broadcast	0.8783	0.6216	4	512	8222	137
+31693	ieee t circ syst vid	-0.073	0.6695	3	693	17063	338
+31698	ieee t circuits-i	-0.8028	0.6546	3	620	11036	243
+31699	ieee t circuits-ii	-0.7273	0.6579	3	546	6871	162
+31701	ieee t cloud comput	0.9899	-0.266	2	733	78615	1663
+31704	ieee t cogn commun	1.3991	0.3751	4	715	58927	945
+31708	ieee t commun	1.5014	0.5935	4	751	187075	3959
+31715	ieee t comput	0.3071	0.4338	3	747	49786	1101
+31716	ieee t comput aid d	-0.5434	0.6111	3	702	20453	392
+31722	ieee t comput soc sy	0.3174	-0.0654	1	702	21804	468
+31727	ieee t consum electr	-0.3049	-0.084	1	709	18807	488
+31729	ieee t contr syst t	-0.6047	-0.0942	1	479	3846	86
+31733	ieee t cybernetics	0.0067	0.3418	1	715	24319	525
+31736	ieee t depend secure	0.4577	0.018	2	732	38569	901
+31742	ieee t electron dev	-1.3836	0.8634	3	251	11300	173
+31743	ieee t em top comp i	0.2292	0.3721	4	566	7997	135
+31745	ieee t emerg top com	0.6516	0.0647	2	741	37199	722
+31750	ieee t eng manage	-0.1586	-0.7347	1	520	5146	101
+31752	ieee t evolut comput	0.139	0.0221	1	630	17086	459
+31754	ieee t fuzzy syst	-0.1329	0.1978	1	538	5830	145
+31757	ieee t geosci remote	-0.4436	0.3948	1	568	7221	175
+31758	ieee t green commun	1.3364	0.04	4	728	47922	867
+31762	ieee t hum-mach syst	-0.2025	0.5721	1	424	3640	70
+31764	ieee t image process	-0.2738	0.7894	3	636	14890	347
+31766	ieee t ind appl	-0.8888	-0.5737	1	559	6999	123
+31770	ieee t ind electron	-0.7659	-0.1964	1	727	23754	516
+31772	ieee t ind inform	0.1867	-0.4984	1	758	382568	7771
+31777	ieee t inf foren sec	0.3369	0.3366	2	747	60544	1274
+31779	ieee t inf technol b	-0.4216	0.0923	1	500	4681	85
+31781	ieee t inform theory	0.8942	0.7094	4	707	37973	842
+31782	ieee t instrum meas	-0.8959	0.15	1	701	22977	459
+31784	ieee t intell transp	0.2904	0.4954	4	754	193821	3734
+31787	ieee t intell vehicl	-0.1015	0.8277	4	513	8177	188
+31791	ieee t knowl data en	0.0247	0.335	1	747	34619	685
+31795	ieee t med imaging	-0.5829	0.4991	1	408	3150	61
+31797	ieee t microw theory	-0.5212	0.6016	3	383	3302	69
+31802	ieee t mobile comput	0.9612	0.553	4	756	272312	5952
+31805	ieee t multi-scale c	-0.5361	0.3231	3	504	3130	54
+31808	ieee t multimedia	0.3069	0.5969	3	721	25829	517
+31814	ieee t netw sci eng	0.9155	0.4559	4	747	84045	1567
+31816	ieee t netw serv man	1.1066	-0.4038	4	743	102582	1811
+31822	ieee t neur net lear	-0.2842	0.5931	3	742	36733	722
+31823	ieee t neur sys reh	-0.6235	0.3119	1	354	2447	72
+31826	ieee t neural networ	-0.3888	0.5038	3	559	5339	139
+31829	ieee t parall distr	0.8173	0.2011	2	747	141274	2965
+31834	ieee t pattern anal	-0.3056	0.7237	3	722	32101	780
+31837	ieee t power deliver	-0.8822	-0.5564	1	400	3042	65
+31838	ieee t power electr	-0.9812	-0.3997	1	506	6190	115
+31839	ieee t power syst	-0.7675	-0.5843	1	563	10797	232
+31845	ieee t reliab	-0.1242	-0.0251	1	630	8415	164
+31846	ieee t robot	-0.1258	0.6342	3	422	3994	73
+31850	ieee t serv comput	0.8644	-0.2885	2	746	96104	1896
+31855	ieee t signal inf pr	1.1873	0.2574	4	582	10456	240
+31856	ieee t signal proces	0.555	0.9166	4	720	38426	863
+31858	ieee t smart grid	-0.8195	-0.6161	1	712	48458	831
+31861	ieee t software eng	0.1683	-0.1096	2	535	5101	112
+31863	ieee t sust comput	0.447	-0.5135	5	678	15929	324
+31865	ieee t sustain energ	-0.9922	-0.5492	1	399	3663	70
+31869	ieee t syst man cy b	0.0365	0.2285	1	454	2918	73
+31870	ieee t syst man cy c	0.0306	0.2662	1	575	4930	110
+31871	ieee t syst man cy-s	-0.2394	-0.1873	1	700	20420	465
+31881	ieee t veh technol	1.3238	0.3194	4	757	516835	10540
+31886	ieee t vis comput gr	-0.1195	0.4796	3	472	4047	73
+31887	ieee t vlsi syst	-0.6121	0.6291	3	605	10232	226
+31888	ieee t wirel commun	1.4321	0.5961	4	754	377373	8364
+32136	ieee trust big	0.1291	-0.3938	2	525	4256	84
+32141	ieee veh technol mag	0.9516	0.2976	4	730	41099	689
+32160	ieee vts veh technol	0.8126	0.2283	4	714	24111	386
+32163	ieee wcnc	1.1366	0.1221	4	725	44817	749
+32167	ieee wint conf appl	-0.1104	0.8018	3	464	4244	74
+32170	ieee wirel commun	0.9916	0.1187	4	757	173474	2977
+32171	ieee wirel commun le	1.6414	0.4986	4	733	88086	1773
+32174	ieee wirel communn	1.2424	-0.0449	4	579	10805	143
+32200	ieee world congr ser	0.5937	-0.4172	2	453	3070	65
+32208	ieee-acm t audio spe	-0.5887	0.483	1	403	2669	63
+32209	ieee-asme t mech	-0.8244	-0.0364	1	398	3034	62
+32210	ieee-caa j automatic	-0.1828	-0.2262	1	676	16968	325
+32265	ieice t commun	0.8945	-0.0923	4	486	4930	113
+32271	ieice t inf syst	-0.0818	-0.0973	1	430	2198	55
+32293	iet commun	0.7241	-0.5853	4	678	21867	387
+32309	iet gener transm dis	-1.0783	-0.6689	1	365	5044	67
+32313	iet inform secur	-0.2592	-0.3156	1	375	2202	51
+32316	iet intell transp sy	-0.2701	0.1323	1	545	5211	112
+32322	iet netw	0.5523	-0.5159	2	568	6354	124
+32337	iet wirel sens syst	-0.5209	-0.3946	1	455	3106	55
+32339	iete j res	-0.5755	-0.2899	1	487	3129	56
+32341	iete tech rev	-0.2648	-0.4886	1	521	4458	63
+32375	ifac papersonline	-0.6478	-0.495	1	612	10767	174
+32386	ifip adv inf comm te	-0.172	-0.4245	1	606	5732	100
+32571	image vision comput	-0.6268	0.3602	1	413	2839	67
+32596	img proc comp vis re	-0.2356	1.0081	3	479	6743	97
+33167	inform fusion	-0.5128	0.0951	1	727	22924	444
+33187	inform process lett	0.4271	0.1381	2	406	2114	64
+33188	inform process manag	-0.393	-0.5969	1	582	8907	179
+33196	inform sciences	-0.0176	-0.0261	1	749	53921	1232
+33207	inform software tech	0.007	-0.632	1	560	7117	111
+33209	inform syst	-0.0367	-0.3561	1	571	5180	113
+33210	inform syst front	-0.2469	-0.2211	1	649	7501	138
+33259	information	-0.3669	-0.5212	1	690	14344	248
+33689	int c comp supp coop	0.1972	-0.3282	2	565	4961	77
+33863	int c learn repr	-0.1012	0.7605	3	500	4021	64
+33883	int c machine learni	0.1035	0.9419	3	446	3770	64
+33919	int c par distrib sy	0.6113	0.2334	2	676	12283	220
+33921	int c patt recog	-0.1855	0.7249	3	604	8522	148
+34029	int con adv info net	0.4395	-0.3992	2	635	10426	175
+34030	int con distr comp s	0.6466	0.3681	2	744	64140	1099
+34033	int conf acoust spee	-0.0185	0.6691	3	716	22104	382
+34036	int conf adv commun	0.3709	-0.1845	2	665	11283	166
+34058	int conf cloud comp	0.752	-0.3739	2	644	12572	191
+34060	int conf cloud eng	0.7111	-0.1765	2	609	8684	120
+34078	int conf comput netw	0.6004	-0.2213	2	557	5593	94
+34156	int conf netw ser	0.8099	-0.4161	2	517	5700	107
+34163	int conf pervas comp	0.271	0.1102	2	718	17633	327
+34181	int conf smart grid	-0.6029	-0.6449	1	415	3263	50
+34184	int conf softw eng	0.1527	-0.3263	1	539	3905	63
+34194	int conf ubiq futur	0.618	-0.5856	2	566	6523	94
+34199	int conf util cloud	0.6009	-0.4531	2	615	7873	148
+34201	int conf wire commun	1.371	0.2359	4	530	9151	135
+34229	int el devices meet	-1.348	0.8757	3	249	4298	60
+34250	int geol rev	1.0035	0.2792	4	551	6101	142
+34251	int geosci remote se	-0.5737	0.1717	1	501	3163	50
+34283	int j adv comput sc	-0.3963	-0.3753	1	674	10326	205
+34303	int j adv manuf tech	-0.6325	-0.6181	1	558	9510	176
+34455	int j commun syst	0.0921	-0.8076	1	718	26938	494
+34463	int j comput appl	-0.0483	-0.4062	1	555	4371	73
+34477	int j comput integ m	-0.6203	-0.6268	1	409	4762	74
+34501	int j comput vision	-0.2818	0.7471	3	595	8988	197
+34504	int j computer appl	0.1895	-0.4388	2	433	2294	63
+34569	int j distrib sens n	-0.1322	-0.4091	1	737	27257	528
+34598	int j elec power	-1.0566	-0.6488	1	523	13644	163
+34694	int j env res pub he	-0.7877	-0.1132	1	529	6382	124
+34800	int j inf secur	0.121	-0.5658	2	446	3267	81
+34819	int j inform manage	-0.4298	-0.4512	1	675	12422	195
+34865	int j intell syst	-0.2544	-0.0379	1	550	5250	123
+34900	int j mach learn cyb	-0.2424	0.1485	1	597	5655	101
+34931	int j med inform	-0.3683	0.1415	1	495	3542	63
+34972	int j netw manag	0.3843	-0.5401	2	487	3651	63
+35044	int j prod econ	-0.7315	-0.6198	1	494	6808	112
+35045	int j prod res	-0.6896	-0.5079	1	659	14961	274
+35253	int j web grid serv	0.0537	-0.352	1	519	3444	76
+35261	int j wirel inf netw	-0.4608	-0.3587	1	482	3600	57
+35304	int parall distrib p	0.4079	0.3672	2	526	4896	109
+35376	int s high perf comp	-0.2097	0.7376	3	528	7170	117
+35522	int wirel commun	0.534	-0.098	4	736	30530	477
+35548	int worksh qual serv	0.8114	0.499	2	484	4373	89
+36148	intell autom soft co	-0.5548	-0.3287	1	494	3177	67
+36191	intelligent and converged networks	1.4429	-0.3398	4	367	4718	68
+36577	international journal of computer applications	-0.1892	-0.3407	1	482	2672	50
+36729	international journal of information technology	-0.4419	-0.5841	1	499	4375	54
+37026	internet of everything: algorithms	0.5107	-0.6854	2	503	4796	66
+37136	internet technol let	-0.0122	-0.5628	1	573	7363	81
+37140	internet things	0.0492	-0.434	1	576	5937	87
+37219	internet things-neth	-0.2888	-0.6635	1	746	60674	1010
+37260	interspeech	-0.4152	0.4756	1	514	4101	62
+37561	iop conference series: materials science and engineering	-0.8023	-0.2029	1	435	2443	63
+37806	iot-basel	-0.5246	-0.7252	1	493	5100	64
+37987	isa t	-0.9606	-0.2582	1	463	4564	72
+38102	isprs int j geo-inf	-0.607	-0.3684	1	397	2382	58
+38118	isscc dig tech pap i	-0.9031	0.7453	3	459	10908	216
+38169	it prof	0.0898	-0.542	2	650	11227	197
+38313	j acm	0.5977	0.3562	2	545	5451	151
+38314	j acoust soc am	-0.7615	0.288	1	293	1668	64
+38345	j adv transport	-0.3194	0.0398	1	524	4320	74
+38405	j am med inform assn	-0.4938	-0.0508	1	448	3682	55
+38411	j am stat assoc	-0.5103	0.2809	1	459	2856	57
+38414	j amb intel hum comp	-0.2715	-0.5806	1	740	37695	715
+38415	j amb intel smart en	-0.5356	-0.2446	1	409	2398	57
+38462	j appl phys	-1.4288	0.8081	3	199	3648	57
+38485	j artif intell res	0.1123	0.2354	1	530	4361	80
+38542	j big data-ger	-0.618	-0.181	1	619	9929	170
+38555	j biomed inform	-0.4346	0.0508	1	540	4948	89
+38576	j build eng	-0.8292	-0.4047	1	428	3116	50
+38587	j bus res	-0.6784	-0.3725	1	393	2179	50
+38650	j circuit syst comp	-0.3823	-0.5146	1	351	1689	51
+38656	j clean prod	-0.8135	-0.5701	1	660	20824	365
+38682	j cloud comput-adv s	0.2799	-0.8342	2	718	28890	490
+38697	j commun netw-s kor	1.2869	-0.2418	4	617	15181	228
+38743	j comput netw commun	0.1269	-0.7143	2	437	2910	52
+38751	j comput sci tech-ch	-0.0395	0.2665	3	496	3373	65
+38753	j comput sci-neth	0.1505	-0.5102	1	484	4092	71
+38757	j comput syst sci	0.1018	0.0623	2	551	4371	104
+38820	j cryptol	0.5353	0.0128	2	371	3421	84
+38941	j electr comput eng	-0.4881	-0.54	1	528	3963	66
+38975	j energy storage	-1.0106	-0.6148	1	375	3946	53
+39141	j global optim	0.4131	-0.1784	1	373	2297	59
+39147	j grid comput	0.5715	-0.827	2	680	30141	468
+39173	j healthc eng	-0.6434	-0.2349	1	424	2963	83
+39250	j ind inf integr	-0.4809	-0.539	1	706	18911	300
+39271	j inf process syst	0.3194	-0.3266	2	462	3462	93
+39275	j inf secur appl	-0.1556	-0.6672	1	685	17117	315
+39346	j intell fuzzy syst	-0.3477	-0.174	1	571	4909	140
+39348	j intell manuf	-0.704	-0.5014	1	593	8901	143
+39349	j intell robot syst	-0.0763	-0.0154	1	503	4467	71
+39365	j internet serv appl	0.3614	-0.2682	2	604	6666	97
+39369	j internet technol	-0.0507	-0.4966	1	470	3439	82
+39394	j king saud univ com	0.0375	-0.9226	1	521	6583	98
+39396	j king saud univ-com	-0.2449	-0.6529	1	683	16158	274
+39423	j lightwave technol	-0.0172	0.3449	3	598	9688	195
+39435	j mach learn res	-0.0509	0.6197	3	715	19303	449
+39459	j manuf syst	-0.728	-0.5587	1	672	22505	367
+39521	j med internet res	-0.6369	0.0177	1	428	4575	70
+39527	j med syst	-0.3943	-0.221	1	664	15722	332
+39603	j netw comput appl	0.4136	-0.723	2	757	183766	2962
+39607	j netw syst manag	0.1818	-0.8581	1	611	10802	188
+39673	j opt commun netw	0.9064	-0.3588	2	468	6445	118
+39697	j parallel distr com	0.333	-0.5212	2	752	65575	1210
+39756	j phys conf ser	-0.7287	0.01	1	477	2315	64
+39837	j real-time image pr	-0.4953	0.1126	1	466	2379	58
+39934	j sens actuar netw	-0.2001	-0.2807	1	536	4094	61
+39935	j sens actuat netw	-0.0785	-0.8159	1	629	9797	151
+39940	j sensors	-0.4913	-0.2634	1	642	7711	168
+39961	j signal process sys	-0.1928	0.332	3	506	3668	62
+40037	j supercomput	0.1083	-0.6672	1	748	63430	1145
+40055	j syst architect	0.387	-0.4189	2	752	53032	880
+40062	j syst software	0.3083	-0.4867	2	716	24686	436
+40182	j vis commun image r	-0.5178	0.308	1	383	2399	61
+40188	j vlsi sig proc syst	1.1575	0.7396	4	365	2792	74
+40201	j web semant	0.0174	-0.1787	1	365	2528	51
+40946	journal of ambient intelligence and humanized computing	-0.2435	-0.6261	1	454	3024	51
+41006	journal of communications and information networks	1.3322	0.3913	4	524	7621	103
+41223	journal of physics: conference series	-0.6361	-0.1998	1	597	5973	136
+41263	journal of software	0.1486	-0.1723	1	408	2723	91
+41487	kdd'16: proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining	-0.2352	0.32	1	485	3066	69
+41489	kdd'18: proceedings of the 24th acm sigkdd international conference on knowledge discovery & data mining	0.033	0.7954	3	492	4751	81
+41490	kdd'19: proceedings of the 25th acm sigkdd international conferencce on knowledge discovery and data mining	-0.029	0.6376	3	367	2548	52
+41605	knowl inf syst	0.0003	0.0827	1	556	5007	116
+41609	knowl-based syst	-0.3814	0.0348	1	718	23664	483
+41667	ksii t internet inf	0.0861	-0.4909	1	629	9520	260
+41766	l n inst comp sci so	0.0306	-0.0882	2	660	10120	162
+42008	learning multiple layers of features from tiny images	0.0264	1.0123	3	372	2607	61
+42066	lect note data eng	-0.1476	-0.5553	1	569	5434	84
+42068	lect note netw syst	-0.3628	-0.2196	1	539	4263	67
+42070	lect notes artif int	-0.2155	0.11	1	709	14457	267
+42074	lect notes comput sc	0.1473	0.1485	2	758	216479	4963
+42076	lect notes computer	0.2688	-0.3065	2	420	2461	72
+42084	lect notes electr en	-0.0132	-0.5108	1	584	5214	95
+42771	mach learn	0.0206	0.4917	3	686	13261	268
+42805	machine learning	-0.1733	0.0428	1	440	2620	52
+43048	manage sci	0.1552	-0.0577	1	441	3105	79
+43114	manufacturing letters	-0.431	-0.4376	1	481	4213	62
+43318	mater today-proc	-0.5888	-0.5691	1	543	5341	97
+43374	math probl eng	-0.4647	-0.2202	1	683	9749	230
+43377	math program	0.9795	0.5878	4	479	5775	148
+43420	mathematics-basel	-0.5693	-0.4763	1	620	10186	195
+43544	measurement	-0.9112	-0.0491	1	650	13950	270
+43599	mech syst signal pr	-0.9548	0.0779	1	588	12411	236
+43608	mecomm'18: proceedings of the 2018 workshop on mobile edge communications	0.7075	0.3091	2	560	6531	87
+43966	micromachines-basel	-1.0956	0.2778	3	464	3598	57
+43972	microprocess microsy	-0.5808	-0.1211	1	690	11311	218
+44094	midwest symp circuit	-0.5996	0.3767	3	498	3293	59
+44371	mob inf syst	0.0169	-0.7206	1	688	17021	356
+44396	mobicom '15: proceedings of the 21st annual international conference on mobile computing and networking	0.3009	0.6375	2	415	3161	105
+44409	mobicom'16: proceedings of the 22nd annual international conference on mobile computing and networking	0.3198	0.6277	2	323	1600	54
+44410	mobicom'18: proceedings of the 24th annual international conference on mobile computing and networking	0.4226	0.7679	2	406	5164	99
+44411	mobicom'19: proceedings of the 25th annual international conference on mobile computing and networking	0.4301	0.6605	2	374	2296	60
+44488	mobile edge computin	0.9578	-0.1479	2	425	3427	68
+44512	mobile netw appl	0.3447	-0.3847	2	749	43804	817
+44595	mobisys'14: proceedings of the 12th annual international conference on mobile systems	0.4821	0.3	2	499	3611	71
+44597	mobisys'17: proceedings of the 15th annual international conference on mobile systems	0.3448	0.6944	2	425	4224	69
+44598	mobisys'18: proceedings of the 16th acm international conference on mobile systems	0.4372	0.626	2	460	3458	69
+45150	multimed tools appl	-0.3066	-0.1837	1	744	35512	705
+45170	multimedia syst	-0.4798	0.0476	1	435	2794	61
+45326	nano energy	-1.3566	0.533	3	342	9770	143
+45329	nano lett	-1.4704	0.8143	3	212	7587	90
+45363	nanotechnology	-1.289	0.7706	3	287	3934	70
+45398	nat commun	-1.2385	0.6804	3	677	21889	319
+45409	nat electron	-1.2212	0.8325	3	543	13639	178
+45423	nat mater	-1.4324	0.8634	3	195	7598	77
+45424	nat med	-0.8038	0.2508	1	514	4671	62
+45425	nat methods	-0.3939	0.45	3	503	3151	77
+45427	nat nanotechnol	-1.4311	0.8434	3	289	8545	87
+45523	nature	-0.9916	0.6723	3	745	46095	737
+45839	neural comput	-0.5415	0.5515	3	617	6999	144
+45840	neural comput appl	-0.4746	-0.1722	1	732	28096	564
+45868	neural networks	-0.5346	0.5001	3	676	12412	232
+45894	neural process lett	-0.263	0.066	1	456	2418	58
+45911	neurocomputing	-0.4484	0.2304	1	751	39924	780
+46378	nonlinear dynam	-0.7184	0.1144	1	308	2397	52
+46497	npj digit med	-0.7539	0.2334	1	419	3727	64
+46855	ocean eng	-0.6843	0.0713	1	348	2113	52
+47421	oper res	0.4649	0.4437	4	514	4963	142
+47442	operating systems review	0.6043	-0.0092	2	479	3627	88
+47493	opt express	-1.1353	0.6006	3	350	4218	71
+47883	p 1 edition mcc work	0.5223	-0.3248	2	730	24836	489
+48767	p 2 acm sigcomm work	0.6072	-0.4631	2	467	3638	54
+48948	p 2 usenix c hot top	1.1382	0.3121	4	387	3159	89
+49466	p 2015 worksh mob bi	0.714	-0.3484	2	540	6217	103
+50845	p 3 int c learning r	0.0274	0.9197	3	397	2846	78
+51795	p 8 int c mob syst a	0.8864	0.2029	2	511	5554	122
+52206	p adv neur inf proc	0.1912	0.9474	3	455	4077	76
+52253	p amer contr conf	-0.1422	0.0752	1	426	2742	65
+52278	p ann hicss	-0.2029	-0.2743	1	507	3523	57
+52883	p ieee	-0.018	0.4822	3	758	123169	2098
+53258	p ieee glob comm c g	0.804	0.3189	2	509	4409	72
+53284	p ieee i c serv comp	0.4939	-0.3477	2	443	2721	56
+53369	p ieee int c comm ic	1.0604	0.2138	2	501	5457	89
+53617	p ieee s secur priv	0.3709	0.3367	2	692	26192	549
+53683	p ieee wir comm netw	1.269	0.0961	4	394	3388	57
+54121	p int c learn repr	-0.0355	1.025	3	471	5961	126
+54336	p int comp softw app	0.4226	-0.3312	2	633	8658	145
+54609	p machine learning r	0.1935	1.3733	3	334	4236	64
+54610	p machine learning s	0.0678	1.0288	3	468	5425	97
+54689	p natl acad sci usa	-0.757	0.3985	3	612	8693	155
+55191	p worksh mob big dat	0.5236	-0.3323	2	540	4305	55
+55613	pattern recogn	-0.3448	0.3862	1	707	14377	349
+55614	pattern recogn lett	-0.4644	0.1963	1	675	10136	222
+55695	peer peer netw appl	0.2123	-0.8499	1	730	33975	626
+55709	peerj comput sci	-0.3932	-0.407	1	572	6001	111
+55761	perform evaluation	0.8128	-0.124	2	524	5232	110
+55789	performance evaluation review	0.784	0.1181	2	463	3398	87
+55841	pers ubiquit comput	-0.0762	-0.0425	1	647	9623	215
+55896	pervasive mob comput	0.0335	-0.1267	1	737	30161	586
+55972	philos t r soc a	-0.7238	0.2662	1	482	2791	50
+56030	phys commun-amst	1.1217	0.2341	4	616	19232	313
+56057	phys rev e	-0.4292	0.4368	1	374	2461	80
+56058	phys rev lett	-1.059	0.6789	3	419	4183	70
+56076	physica a	-0.5925	0.1287	1	457	3215	71
+56242	plos one	-0.578	0.0099	1	728	19637	376
+56546	pr ieee comp design	-0.1607	0.5888	3	499	3692	66
+56558	pr mach learn res	0.2294	0.9133	3	744	85870	1515
+56698	preprint	-0.1964	0.1294	1	485	3735	76
+57361	proc acm interact mo	0.05	0.696	2	470	6894	154
+57444	proc cirp	-0.6662	-0.6594	1	552	11123	157
+57461	proc cvpr ieee	-0.2275	0.8358	3	749	127740	2748
+57652	proc ieee global com	1.4997	0.2167	4	412	4047	66
+57681	proc ieee int c comm	1.4954	0.5331	4	513	8858	127
+57886	proc int c learn rep	0.0336	1.1048	3	365	5609	60
+57912	proc int c tools art	-0.0487	0.3654	1	493	3480	57
+57921	proc int conf data	0.0961	0.4052	2	634	8905	224
+57927	proc int conf paral	0.6009	0.2561	2	444	3136	70
+58044	proc spie	-0.7854	0.3763	3	659	8370	128
+58071	proc vldb endow	0.2451	0.2893	2	629	10026	267
+58291	procedia comput sci	-0.1946	-0.3891	1	751	45938	817
+58295	procedia computer science	-0.4726	-0.4029	1	657	10307	190
+58298	procedia engineer	-0.4226	-0.2075	1	602	5305	114
+58302	procedia manuf	-0.6494	-0.6292	1	531	8192	112
+58454	proceedings 2018 ieee 11th international conference on cloud computing (cloud)	0.7542	-0.5606	2	414	4070	57
+58802	proceedings of nsdi '17: 14th usenix symposium on networked systems design and implementation	0.558	0.567	2	457	3562	81
+58804	proceedings of osdi'16: 12th usenix symposium on operating systems design and implementation	-0.0015	0.4629	3	527	3400	87
+58851	proceedings of the 10th international conference on intelligent systems and control (isco'16)	0.9981	-0.3835	2	423	3001	53
+59479	proceedings of the 2015 ifip/ieee international symposium on integrated network management (im)	0.7891	-0.4916	2	438	4134	60
+59580	proceedings of the 2018 acm sigsac conference on computer and communications security (ccs'18)	0.4788	0.3298	2	428	3225	73
+59589	proceedings of the 2018 conference of the acm special interest group on data communication (sigcomm '18)	0.5171	0.6658	2	394	2632	72
+59896	proceedings of the 26th usenix security symposium (usenix security '17)	0.5024	0.0763	2	423	3071	65
+59906	proceedings of the 27th usenix security symposium	0.4238	0.333	2	384	2435	54
+60358	proceedings of the acm on interactive	0.1452	0.6462	2	514	6545	151
+60824	proceedings of the twenty-seventh international joint conference on artificial intelligence	-0.0681	0.8208	3	391	3526	66
+60825	proceedings of the twenty-sixth acm symposium on operating systems principles (sosp '17)	0.4689	0.3854	2	452	3166	58
+60936	processes	-0.8337	-0.4445	1	517	4447	84
+61965	real tim syst symp p	0.2331	0.2608	2	402	2603	79
+62291	reliab eng syst safe	-0.6573	-0.1782	1	578	6327	127
+62332	remote sens-basel	-0.6867	0.0111	1	680	21738	366
+62341	renew energ	-1.0412	-0.5063	1	528	7532	120
+62344	renew sust energ rev	-0.9412	-0.57	1	667	23643	359
+62706	resour conserv recy	-0.8389	-0.4977	1	241	2602	56
+63089	rfid j	0.0938	-0.0334	2	464	2654	62
+63194	robot auton syst	-0.3013	0.0415	1	500	4579	79
+63195	robot cim-int manuf	-0.6356	-0.6577	1	568	12044	189
+63735	sci adv	-1.3111	0.6982	3	376	4588	64
+63739	sci am	-0.1304	0.0507	1	395	1682	56
+63747	sci china inform sci	0.6722	0.4108	4	638	12013	236
+63756	sci data	-0.4842	0.2297	1	446	2731	53
+63782	sci programming-neth	-0.2663	-0.4706	1	521	4347	94
+63786	sci rep-uk	-1.0013	0.3694	3	722	28170	510
+63817	sci total environ	-0.8326	-0.2594	1	446	3861	106
+63842	science	-1.1095	0.6098	3	717	24876	353
+63965	sec 2017: 2017 the second acm/ieee symposium on edge computing (sec'17)	0.841	0.0408	2	555	8428	107
+63994	sec'19: proceedings of the 4th acm/ieee symposium on edge computing	0.3606	0.6709	3	502	4987	82
+64040	secur commun netw	-0.0017	-0.6317	1	729	31749	614
+64046	secur privacy	-0.0205	-0.7543	1	502	4118	59
+64421	sensor actuat a-phys	-1.1913	0.4385	3	438	4675	65
+64422	sensor actuat b-chem	-1.2652	0.458	3	395	5486	89
+64451	sensors	-0.1633	-0.4122	1	471	3504	77
+64471	sensors-basel	-0.5763	-0.0694	1	758	348572	6704
+64488	sensys'15: proceedings of the 13th acm conference on embedded networked sensor systems	0.4097	0.5749	2	438	3149	56
+64544	serv oriented comput	0.4762	-0.631	2	463	4077	74
+64730	siam j comput	0.5727	0.3286	2	468	4467	122
+64740	siam j optimiz	0.7925	0.9791	4	282	2428	66
+64748	siam rev	-0.029	0.4784	3	406	1905	50
+64843	sigmod rec	0.1368	-0.0024	2	436	2326	59
+64861	signal process	-0.6039	0.3574	1	470	4150	108
+64934	simul model pract th	0.145	-0.7541	2	681	16867	294
+65184	smart cities-basel	-0.6359	-0.6841	1	521	5953	87
+65439	sn appl sci	-0.6005	-0.437	1	492	3024	53
+65441	sn comput sci	-0.562	-0.0918	1	501	2878	52
+65572	soft comput	-0.2038	-0.3695	1	701	15950	360
+65680	software pract exper	0.4773	-0.6879	2	728	38385	698
+65720	sol energy	-1.0727	-0.4575	1	252	4341	88
+66610	stochastic network o	1.8421	0.4258	4	238	2118	60
+66611	stochastic network optimization with application to communication and queueing systems	1.4816	0.7304	4	290	2621	84
+66713	struct health monit	-1.0032	0.1955	1	301	3314	56
+66753	stud comput intell	-0.1288	0.155	1	713	11580	230
+67025	sustain cities soc	-0.6278	-0.6016	1	718	31695	502
+67028	sustain comput-infor	-0.3219	-0.6764	1	692	18912	286
+67032	sustain energy techn	-0.8007	-0.5462	1	528	6255	94
+67050	sustainability-basel	-0.7149	-0.4322	1	740	43519	770
+67100	swarm evol comput	-0.2291	-0.5916	1	546	7945	156
+67139	sym rel dist syst	0.4593	0.1873	2	492	3697	66
+67145	symmetry-basel	-0.2022	-0.4268	1	709	17718	292
+67314	t emerg telecommun t	0.1728	-0.6939	1	749	51676	898
+67477	tech rep	0.3918	-0.0624	2	562	7327	154
+67507	tech. rep.	0.1661	0.0238	2	569	5177	119
+67642	technical report	0.4521	-0.2927	2	630	9088	206
+67724	technol forecast soc	-0.697	-0.489	1	574	7425	128
+67833	telecommun syst	0.2835	-0.6238	2	642	10845	206
+67863	telemat inform	-0.3484	-0.3674	1	466	2805	60
+67924	tencon ieee region	0.0582	-0.5095	2	449	2591	51
+68705	theor comput sci	0.402	0.0808	2	474	4016	93
+68784	thesis	0.0855	-0.1101	2	584	7832	179
+69682	transport res b-meth	-0.0752	0.2747	1	394	4241	90
+69684	transport res c-emer	-0.234	0.336	1	624	16050	291
+69689	transport res rec	-0.3054	0.3731	1	482	6933	117
+69896	tsinghua sci technol	0.2401	0.104	1	658	12892	310
+70025	u.s. patent	-0.2459	0.1647	3	562	7737	122
+70088	ubicomp'16: proceedings of the 2016 acm international joint conference on pervasive and ubiquitous computing	0.1372	0.595	2	351	1894	58
+70156	ueee int sym pers in	1.5283	-0.1459	4	409	5829	70
+70538	us	-0.0068	-0.1552	2	580	8362	187
+70567	us patent	-0.2367	-0.2679	1	437	2393	52
+70652	usenix association proceedings of the third symposium on operating systems design and implementation (osdi '99)	0.3318	-0.2355	2	426	3116	73
+70834	veh commun	0.7661	-0.7069	4	662	20125	323
+70838	veh technol confe	1.1315	0.5752	4	554	10152	154
+71219	waste manage	-0.8764	-0.4717	1	187	2151	55
+71254	water-sui	-0.7409	-0.2715	1	382	2635	67
+71703	white paper	0.7614	0.0486	2	648	12392	206
+71704	white paper 11	1.0698	-0.0842	2	636	11355	219
+71873	wiley ser para dist	0.4967	-0.7844	2	365	2445	56
+71963	wirel commun mob com	0.1916	-0.5825	1	755	65329	1283
+71968	wirel netw	0.3176	-0.7714	1	727	44957	848
+72008	wireless communicati	0.7234	0.5558	4	375	2962	82
+72064	wireless pers commun	-0.0849	-0.7246	1	748	59006	1112
+72114	wires data min knowl	-0.4362	0.1205	1	530	3582	55
+72209	working paper	0.6585	-0.4382	2	304	1588	54
+72405	world wide web	0.2463	-0.1526	2	666	10454	185
+72952	计算机学报	0.1928	-0.2716	1	295	1628	57
+72959	计算机研究与发展	0.1346	-0.0741	1	504	5330	128
