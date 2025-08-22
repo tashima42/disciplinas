@@ -4,3 +4,4 @@ matplotlib==3.10.5
 geopy==2.4.1
 plotly==6.3.0
 nbformat>=4.2.0
+kaleido==1.0.0
