@@ -1,0 +1,7 @@
+*.env
+data/
+desafio/data/
+venv/
+venv3.12/
+.DS_Store
+./*/*.csv
