@@ -1,0 +1,91 @@
+# 1) Qual o gênero e (eyecolor) (se tiver) de cada Superhero?
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX herois: <http://www.semanticweb.org/rita/ontologies/2025/herois/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+select ?gender ?eyecolor  
+where {
+    ?superhero dbo:eyecolor ?eyecolor .
+    ?superhero foaf:gender ?gender .
+    
+    FILTER (?gender != "unkown")
+}
+########################################################################
+
+# 2) Mostre o nome da raça de cada Superhero.
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX herois: <http://www.semanticweb.org/rita/ontologies/2025/herois/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+select ?race  
+where {
+    ?superhero dbp:species ?superrace .
+    ?superrace rdfs:label ?race
+}
+########################################################################
+
+# 3) Quem é o publisher do superhero Abraxas?
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX herois: <http://www.semanticweb.org/rita/ontologies/2025/herois/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+select ?nomehero ?publisher  
+where {
+    ?superhero dbp:publisher ?publisher.
+    ?superhero rdfs:label ?nomehero
+    
+    FILTER(?nomehero = "Abraxas")
+
+}
+########################################################################
+
+# 4) Mostre todos os Superheros do sexo masculino.
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX herois: <http://www.semanticweb.org/rita/ontologies/2025/herois/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+select ?nomehero ?gender  
+where {
+    ?superhero rdfs:label ?nomehero.
+    ?superhero foaf:gender ?gender
+    
+    FILTER(?gender = "Male")
+
+}
+########################################################################
+
+# 5) Mostre todos os Superheroes do sexo feminino da MarvelComics.
+
+PREFIX : <http://www.semanticweb.org/rita/ontologies/2022/herois/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX herois: <http://www.semanticweb.org/rita/ontologies/2025/herois/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+select ?nomehero ?gender ?publisher 
+where {
+    ?superhero rdfs:label ?nomehero.
+    ?superhero foaf:gender ?gender.
+    ?superhero dbp:publisher ?publisher
+    
+    FILTER(?gender = "Female")
+    FILTER(?publisher = :Marvel%20Comics)
+
+}
+########################################################################
