@@ -9,8 +9,8 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "hot-deals",
-	Short: "Find, rank and send hot-deals",
+	Use:   "promocoes",
+	Short: "Find, rank and send promocoes",
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
 
@@ -28,10 +28,6 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	var cfgFile string
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.hot-deals.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// var cfgFile string
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.promocoes.yaml)")
 }

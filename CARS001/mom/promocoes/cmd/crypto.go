@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/spf13/cobra"
-	"github.com/tashima42/disciplinas/CARS001/mom/hot-deals/crypto"
+	"github.com/tashima42/disciplinas/CARS001/mom/promocoes/crypto"
 )
 
 var (
@@ -27,11 +27,11 @@ var cryptoCmd = &cobra.Command{
 		privateKeyPath := filepath.Join(keyPairPath, keyPairName+".key")
 		publicKeyPath := filepath.Join(keyPairPath, keyPairName+".pub")
 
-		if err := os.WriteFile(privateKeyPath, private, 0o400); err != nil {
+		if err := os.WriteFile(privateKeyPath, private, 0o600); err != nil {
 			return err
 		}
 
-		if err := os.WriteFile(publicKeyPath, public, 0o400); err != nil {
+		if err := os.WriteFile(publicKeyPath, public, 0o644); err != nil {
 			return err
 		}
 

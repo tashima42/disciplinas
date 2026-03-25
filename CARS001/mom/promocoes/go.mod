@@ -1,4 +1,4 @@
-module github.com/tashima42/disciplinas/CARS001/mom/hot-deals
+module github.com/tashima42/disciplinas/CARS001/mom/promocoes
 
 go 1.26.1
 
