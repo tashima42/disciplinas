@@ -7,6 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var rabbitMQURL string
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "promocoes",
@@ -28,6 +30,5 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// var cfgFile string
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.promocoes.yaml)")
+	rootCmd.PersistentFlags().StringVar(&rabbitMQURL, "rabbitmq-url", "", "RabbitMQ connection URL")
 }
