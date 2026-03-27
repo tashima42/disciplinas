@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"errors"
 
 	"github.com/spf13/cobra"
 	"github.com/tashima42/disciplinas/CARS001/mom/promocoes/gateway"
@@ -11,36 +11,36 @@ import (
 var gatewayCmd = &cobra.Command{
 	Use:   "gateway",
 	Short: "responsavel pela interacao com usuarios para cadastrar promocoes, listar e votar em promocoes",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("gateway called")
-	},
 }
 
 var cadastrarSubCmd = &cobra.Command{
-	Use: "cadastrar-promocao",
+	Use: "cadastrar",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return gateway.Cadastrar()
+		if len(args) != 2 {
+			return errors.New("invalid args")
+		}
+
+		titulo := args[0]
+		categoria := args[1]
+		return gateway.Cadastrar(rabbitMqURL, gatewayPrivateKeyPath, titulo, categoria)
+	},
+}
+
+var votarSubCmd = &cobra.Command{
+	Use: "votar",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) != 1 {
+			return errors.New("invalid args")
+		}
+
+		id := args[0]
+		return gateway.Votar(rabbitMqURL, gatewayPrivateKeyPath, id)
 	},
 }
 
 func init() {
 	gatewayCmd.AddCommand(cadastrarSubCmd)
+	gatewayCmd.AddCommand(votarSubCmd)
 
 	rootCmd.AddCommand(gatewayCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// gatewayCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// gatewayCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

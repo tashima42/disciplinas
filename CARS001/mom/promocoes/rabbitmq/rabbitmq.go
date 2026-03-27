@@ -3,13 +3,13 @@ package rabbitmq
 
 import (
 	"errors"
+	"fmt"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 type RabbitMQ struct {
 	conn    *amqp.Connection
-	queue   amqp.Queue
 	channel *amqp.Channel
 }
 
@@ -22,17 +22,16 @@ func NewRabbitMQ(url string) (*RabbitMQ, error) {
 	if err != nil {
 		return nil, errors.New("failed to open a channel: " + err.Error())
 	}
-	q, err := ch.QueueDeclare(
-		"hello", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
-	)
-	if err != nil {
-		return nil, errors.New("failed to declare a queue: " + err.Error())
-	}
+	return &RabbitMQ{conn: conn, channel: ch}, nil
+}
 
-	return &RabbitMQ{conn: conn, queue: q, channel: ch}, nil
+func (r *RabbitMQ) Channel() *amqp.Channel {
+	return r.channel
+}
+
+func (r *RabbitMQ) DeclareExchangePromocoes() error {
+	if err := r.Channel().ExchangeDeclare("promocoes", "topic", true, false, false, false, nil); err != nil {
+		return fmt.Errorf("failed to declare exchange promocoes: %w", err)
+	}
+	return nil
 }

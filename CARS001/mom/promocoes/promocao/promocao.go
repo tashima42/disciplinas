@@ -1,0 +1,119 @@
+// Package promocao encapsulates logic behind voting and publishing deals
+package promocao
+
+import (
+	"crypto/rsa"
+	"encoding/json"
+	"fmt"
+	"log/slog"
+
+	"github.com/google/uuid"
+	"github.com/rabbitmq/amqp091-go"
+	"github.com/tashima42/disciplinas/CARS001/mom/promocoes/crypto"
+	"github.com/tashima42/disciplinas/CARS001/mom/promocoes/rabbitmq"
+)
+
+type Promocao struct {
+	ID        string `json:"id"`
+	Titulo    string `json:"titulo"`
+	Categoria string `json:"categoria"`
+}
+
+func NewPromocao(titulo, categoria string) Promocao {
+	return Promocao{ID: uuid.New().String(), Titulo: titulo, Categoria: categoria}
+}
+
+func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath string) error {
+	privateKey, err := crypto.ParsePrivateKey(promocaoPrivateKeyPath)
+	if err != nil {
+		return fmt.Errorf("failed to parse promocao private key: %w", err)
+	}
+	gatewayPublicKey, err := crypto.ParsePublicKey(gatewayPublicKeyPath)
+	if err != nil {
+		return fmt.Errorf("failed to parse gateway public key: %w", err)
+	}
+	rq, err := rabbitmq.NewRabbitMQ(rabbitMqURL)
+	if err != nil {
+		return fmt.Errorf("failed to connect to rabbitmq: %w", err)
+	}
+
+	if err := rq.DeclareExchangePromocoes(); err != nil {
+		return err
+	}
+
+	q, err := rq.Channel().QueueDeclare(
+		"fila_promocao",
+		true,
+		false,
+		true,
+		false,
+		nil,
+	)
+	if err != nil {
+		return fmt.Errorf("failed to declare queue: %w", err)
+	}
+
+	if err := rq.Channel().QueueBind(q.Name, "promocao.recebida", "promocoes", false, nil); err != nil {
+		return fmt.Errorf("failed to bind fila_promocao queue to promocoes exchange: %w", err)
+	}
+
+	msgs, err := rq.Channel().Consume(
+		q.Name,
+		"",
+		false,
+		false,
+		false,
+		false,
+		nil,
+	)
+	if err != nil {
+		return fmt.Errorf("failed to register consumer: %w", err)
+	}
+
+	for msg := range msgs {
+		go func(privateKey *rsa.PrivateKey, gatewayPublicKey *rsa.PublicKey) {
+			signature, found := msg.Headers["signature"]
+			if !found {
+				slog.Error("signature header not found")
+				return
+			}
+			s, ok := signature.([]byte)
+			if !ok {
+				slog.Error("failed to transform signature to bytes")
+				return
+			}
+			if err := crypto.Verify(gatewayPublicKey, msg.Body, s); err != nil {
+				slog.Error("failed to verify message: " + err.Error())
+				return
+			}
+			var promocao Promocao
+			if err := json.Unmarshal(msg.Body, &promocao); err != nil {
+				slog.Error("failed to unmarshal json: " + err.Error())
+				return
+			}
+
+			slog.Info(fmt.Sprintf("Promocao: %+v\n", promocao))
+
+			promoSignature, err := crypto.Sign(privateKey, msg.Body)
+			if err != nil {
+				slog.Error("failed to sign message: " + err.Error())
+				return
+			}
+
+			if err := rq.Channel().Publish("promocoes", "promocao.publicada", false, false, amqp091.Publishing{
+				ContentType: "application/json",
+				Body:        msg.Body,
+				Headers:     amqp091.Table{"signature": promoSignature},
+			}); err != nil {
+				slog.Error("failed to publish message to exchange: " + err.Error())
+				return
+			}
+
+			if err := msg.Ack(false); err != nil {
+				slog.Error("failed to ack message: " + err.Error())
+				return
+			}
+		}(privateKey, gatewayPublicKey)
+	}
+	return nil
+}
