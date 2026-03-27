@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"log"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -13,15 +15,11 @@ import (
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		log.Fatal("expected receive or send")
+	if len(os.Args) < 2 {
+		log.Fatal("expected args")
 	}
 
 	arg := os.Args[1]
-
-	if arg != "send" && arg != "receive" {
-		log.Fatal("expected receive or send")
-	}
 
 	conn, q, ch, err := start("amqp://guest:guest@localhost:5672/")
 	if err != nil {
@@ -41,10 +39,35 @@ func main() {
 		if err := send(q, ch); err != nil {
 			log.Fatal("failed to publish a message: " + err.Error())
 		}
+
 	case "receive":
 		if err := receive(q, ch); err != nil {
 			log.Fatal("failed to receive a message: " + err.Error())
 		}
+
+	case "new-task":
+		var body string
+		if len(os.Args) < 3 || os.Args[2] == "" {
+			body = "hello"
+		} else {
+			body = strings.Join(os.Args[2:], " ")
+		}
+
+		if err := newTask(q, ch, body); err != nil {
+			log.Fatal("failed to publish a message: " + err.Error())
+		}
+
+	case "worker":
+		if err := worker(q, ch); err != nil {
+			log.Fatal("failed to receive a message: " + err.Error())
+		}
+
+	case "receive-logs":
+		receive_logs()
+
+	case "emit-log":
+		emit_log()
+
 	default:
 		log.Fatal("unknown state")
 	}
@@ -59,13 +82,22 @@ func start(url string) (*amqp.Connection, amqp.Queue, *amqp.Channel, error) {
 	if err != nil {
 		return nil, amqp.Queue{}, nil, errors.New("failed to open a channel: " + err.Error())
 	}
+	if err := ch.Qos(
+		1,     // prefetch count
+		0,     // prefetch size
+		false, // global
+	); err != nil {
+		return nil, amqp.Queue{}, nil, err
+	}
 	q, err := ch.QueueDeclare(
-		"hello", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		"task_queue", // name
+		true,         // durable
+		false,        // delete when unused
+		false,        // exclusive
+		false,        // no-wait
+		amqp.Table{
+			amqp.QueueTypeArg: amqp.QueueTypeQuorum,
+		},
 	)
 	if err != nil {
 		return nil, amqp.Queue{}, nil, errors.New("failed to declare a queue: " + err.Error())
@@ -98,7 +130,7 @@ func receive(q amqp.Queue, ch *amqp.Channel) error {
 	msgs, err := ch.Consume(
 		q.Name, // queue
 		"",     // consumer
-		true,   // auto-ack
+		false,  // auto-ack
 		false,  // exclusive
 		false,  // no-local
 		false,  // no-wait
@@ -113,6 +145,11 @@ func receive(q amqp.Queue, ch *amqp.Channel) error {
 	go func() {
 		for d := range msgs {
 			log.Printf("Received a message: %s", d.Body)
+			dotCount := bytes.Count(d.Body, []byte("."))
+			t := time.Duration(dotCount)
+			time.Sleep(t * time.Second)
+			log.Printf("Done")
+			d.Ack(false)
 		}
 	}()
 
@@ -120,5 +157,56 @@ func receive(q amqp.Queue, ch *amqp.Channel) error {
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
 	<-sigChan // Blocks until you hit Ctrl+C or kill the process
+	return nil
+}
+
+func newTask(q amqp.Queue, ch *amqp.Channel, body string) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := ch.PublishWithContext(ctx,
+		"",     // exchange
+		q.Name, // routing key
+		false,  // mandatory
+		false,
+		amqp.Publishing{
+			DeliveryMode: amqp.Persistent,
+			ContentType:  "text/plain",
+			Body:         []byte(body),
+		}); err != nil {
+		return errors.New("Failed to publish a message: " + err.Error())
+	}
+	log.Printf(" [x] Sent %s", body)
+	return nil
+}
+
+func worker(q amqp.Queue, ch *amqp.Channel) error {
+	msgs, err := ch.Consume(
+		q.Name, // queue
+		"",     // consumer
+		true,   // auto-ack
+		false,  // exclusive
+		false,  // no-local
+		false,  // no-wait
+		nil,    // args
+	)
+	if err != nil {
+		return errors.New("Failed to register a consumer: " + err.Error())
+	}
+
+	var forever chan struct{}
+
+	go func() {
+		for d := range msgs {
+			log.Printf("Received a message: %s", d.Body)
+			dotCount := bytes.Count(d.Body, []byte("."))
+			t := time.Duration(dotCount)
+			time.Sleep(t * time.Second)
+			log.Printf("Done")
+		}
+	}()
+
+	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
+	<-forever
 	return nil
 }
