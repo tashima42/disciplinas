@@ -8,15 +8,13 @@ import (
 )
 
 var (
-	rabbitMqURL               string
-	gatewayPrivateKeyPath     string
-	gatewayPublicKeyPath      string
-	rankingPrivateKeyPath     string
-	rankingPublicKeyPath      string
-	promocaoPrivateKeyPath    string
-	promocaoPublicKeyPath     string
-	notificacaoPrivateKeyPath string
-	notificacaoPublicKeyPath  string
+	rabbitMqURL            string
+	gatewayPrivateKeyPath  string
+	gatewayPublicKeyPath   string
+	rankingPrivateKeyPath  string
+	rankingPublicKeyPath   string
+	promocaoPrivateKeyPath string
+	promocaoPublicKeyPath  string
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -50,7 +48,4 @@ func init() {
 
 	rootCmd.PersistentFlags().StringVar(&promocaoPublicKeyPath, "promocao-public-key-path", "./promocao/promocao.pub", "Promocao public key path")
 	rootCmd.PersistentFlags().StringVar(&promocaoPrivateKeyPath, "promocao-private-key-path", "./promocao/promocao.key", "Promocao private key path")
-
-	rootCmd.PersistentFlags().StringVar(&notificacaoPublicKeyPath, "notificacao-public-key-path", "./notificacao/notificacao.pub", "Notificacao public key path")
-	rootCmd.PersistentFlags().StringVar(&notificacaoPrivateKeyPath, "notificacao-private-key-path", "./notificacao/notificacao.key", "Notificacao private key path")
 }
