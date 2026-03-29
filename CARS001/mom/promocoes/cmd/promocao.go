@@ -10,7 +10,11 @@ var promocaoCmd = &cobra.Command{
 	Use:   "promocao",
 	Short: "responsavel por receber promocoes, validar e publicar",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return promocao.RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath)
+		v, err := promocao.NewVerificador(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath)
+		if err != nil {
+			return err
+		}
+		return v.Run()
 	},
 }
 
