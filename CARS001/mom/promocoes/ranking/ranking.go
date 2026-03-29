@@ -21,7 +21,7 @@ type ranking struct {
 	rq               *rabbitmq.RabbitMQ
 	privateKey       *rsa.PrivateKey
 	gatewayPublicKey *rsa.PublicKey
-	promocoes        map[string]*PromoVotes
+	promoVotes       map[string]*PromoVotes
 	mu               *sync.Mutex
 }
 
@@ -34,6 +34,10 @@ func NewRanking(rabbitMqURL, rankingPrivateKeyPath, gatewayPublicKeyPath string)
 	rq, err := rabbitmq.NewRabbitMQ(rabbitMqURL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to rabbitmq: %w", err)
+	}
+
+	if err := rq.DeclareExchangePromocoes(); err != nil {
+		return nil, err
 	}
 
 	privateKey, err := crypto.ParsePrivateKey(rankingPrivateKeyPath)
@@ -50,7 +54,7 @@ func NewRanking(rabbitMqURL, rankingPrivateKeyPath, gatewayPublicKeyPath string)
 		rq:               rq,
 		privateKey:       privateKey,
 		gatewayPublicKey: gatewayPublicKey,
-		promocoes:        map[string]*PromoVotes{},
+		promoVotes:       map[string]*PromoVotes{},
 		mu:               &sync.Mutex{},
 	}, nil
 }
@@ -62,7 +66,7 @@ func (r *ranking) Run() error {
 	}
 
 	if err := r.rq.Channel().QueueBind(votosQueue.Name, "promocao.voto", "promocoes", false, nil); err != nil {
-		return errors.New("failed to bind promocoes_verificadas queue to promocoes exchange: " + err.Error())
+		return errors.New("failed to bind queue to promocoes exchange: " + err.Error())
 	}
 
 	votosChan, err := r.rq.Channel().Consume(
@@ -105,11 +109,11 @@ func (r *ranking) Run() error {
 			r.mu.Lock()
 			defer r.mu.Unlock()
 
-			if _, found := r.promocoes[promocao.ID]; !found {
-				r.promocoes[promocao.ID] = &PromoVotes{promocao, 0}
+			if _, found := r.promoVotes[promocao.ID]; !found {
+				r.promoVotes[promocao.ID] = &PromoVotes{promocao, 0}
 			}
 
-			r.promocoes[promocao.ID].Votes += 1
+			r.promoVotes[promocao.ID].Votes += 1
 
 			if err := r.calcHotDeals(promocao.ID); err != nil {
 				slog.Error("failed to calc hot deal: " + err.Error())
@@ -122,18 +126,16 @@ func (r *ranking) Run() error {
 }
 
 func (r *ranking) calcHotDeals(id string) error {
-	promo, found := r.promocoes[id]
+	pv, found := r.promoVotes[id]
 	if !found {
-		return errors.New("promo not found: " + id)
+		return errors.New("promo vote not found: " + id)
 	}
 
-	if promo.Votes < hotDealThreshold {
+	if pv.Votes < hotDealThreshold {
 		return nil
 	}
 
-	slog.Info("Hot deal!")
-
-	promoBody, err := json.Marshal(promo)
+	promoBody, err := json.Marshal(pv.Promocao)
 	if err != nil {
 		return fmt.Errorf("failed to marshal promo to json: %w", err)
 	}
@@ -150,6 +152,8 @@ func (r *ranking) calcHotDeals(id string) error {
 	}); err != nil {
 		return fmt.Errorf("failed to publish message to exchange: %w", err)
 	}
+
+	slog.Info("Hot deal published: " + pv.Promocao.ID)
 
 	return nil
 }
