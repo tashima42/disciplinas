@@ -48,7 +48,7 @@ func NewGateway(rabbitMqURL, gatewayPrivateKeyPath, promocaoPublicKeyPath string
 
 	promocaoPublicKey, err := crypto.ParsePublicKey(promocaoPublicKeyPath)
 	if err != nil {
-		return nil, fmt.Errorf("failed to parse gateway public key: %w", err)
+		return nil, fmt.Errorf("failed to parse promocao public key: %w", err)
 	}
 
 	return &gateway{
@@ -62,13 +62,13 @@ func NewGateway(rabbitMqURL, gatewayPrivateKeyPath, promocaoPublicKeyPath string
 }
 
 func (g *gateway) Run() error {
-	promocoesVerificadasQueue, err := g.rq.Channel().QueueDeclare("promocoes_verificadas", true, false, true, false, nil)
+	promocoesVerificadasQueue, err := g.rq.Channel().QueueDeclare("promocoes_verificadas_gateway", true, false, true, false, nil)
 	if err != nil {
 		return errors.New("failed to declare queue: " + err.Error())
 	}
 
 	if err := g.rq.Channel().QueueBind(promocoesVerificadasQueue.Name, "promocao.publicada", "promocoes", false, nil); err != nil {
-		return errors.New("failed to bind promocoes_verificadas queue to promocoes exchange: " + err.Error())
+		return errors.New("failed to bind queue to promocoes exchange: " + err.Error())
 	}
 
 	promocoesVerificadasChan, err := g.rq.Channel().Consume(
