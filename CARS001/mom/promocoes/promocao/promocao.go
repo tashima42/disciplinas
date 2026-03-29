@@ -71,7 +71,7 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 	}
 
 	for msg := range msgs {
-		go func(privateKey *rsa.PrivateKey, gatewayPublicKey *rsa.PublicKey) {
+		go func(msg amqp091.Delivery, privateKey *rsa.PrivateKey, gatewayPublicKey *rsa.PublicKey) {
 			signature, found := msg.Headers["signature"]
 			if !found {
 				slog.Error("signature header not found")
@@ -113,7 +113,7 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 				slog.Error("failed to ack message: " + err.Error())
 				return
 			}
-		}(privateKey, gatewayPublicKey)
+		}(msg, privateKey, gatewayPublicKey)
 	}
 	return nil
 }
