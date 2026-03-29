@@ -45,8 +45,8 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&gatewayPublicKeyPath, "gateway-public-key-path", "./gateway/gateway.pub", "Gateway public key path")
 	rootCmd.PersistentFlags().StringVar(&gatewayPrivateKeyPath, "gateway-private-key-path", "./gateway/gateway.key", "Gateway private key path")
 
-	rootCmd.PersistentFlags().StringVar(&rankingPrivateKeyPath, "ranking-public-key-path", "./ranking/ranking.pub", "Ranking public key path")
-	rootCmd.PersistentFlags().StringVar(&rankingPublicKeyPath, "ranking-private-key-path", "./ranking/ranking.key", "Ranking private key path")
+	rootCmd.PersistentFlags().StringVar(&rankingPublicKeyPath, "ranking-public-key-path", "./ranking/ranking.pub", "Ranking public key path")
+	rootCmd.PersistentFlags().StringVar(&rankingPrivateKeyPath, "ranking-private-key-path", "./ranking/ranking.key", "Ranking private key path")
 
 	rootCmd.PersistentFlags().StringVar(&promocaoPublicKeyPath, "promocao-public-key-path", "./promocao/promocao.pub", "Promocao public key path")
 	rootCmd.PersistentFlags().StringVar(&promocaoPrivateKeyPath, "promocao-private-key-path", "./promocao/promocao.key", "Promocao private key path")

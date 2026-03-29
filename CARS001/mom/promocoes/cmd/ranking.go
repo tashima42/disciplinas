@@ -10,7 +10,11 @@ var rankingCmd = &cobra.Command{
 	Use:   "ranking",
 	Short: "responsavel por receber promocoes, validar e publicar",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return ranking.Ranking(rabbitMqURL)
+		r, err := ranking.NewRanking(rabbitMqURL, rankingPrivateKeyPath, gatewayPublicKeyPath)
+		if err != nil {
+			return err
+		}
+		return r.Run()
 	},
 }
 

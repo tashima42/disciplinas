@@ -23,25 +23,39 @@ func NewPromocao(titulo, categoria string) Promocao {
 	return Promocao{ID: uuid.New().String(), Titulo: titulo, Categoria: categoria}
 }
 
-func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath string) error {
+type verificador struct {
+	rq               *rabbitmq.RabbitMQ
+	privateKey       *rsa.PrivateKey
+	gatewayPublicKey *rsa.PublicKey
+}
+
+func NewVerificador(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath string) (*verificador, error) {
 	privateKey, err := crypto.ParsePrivateKey(promocaoPrivateKeyPath)
 	if err != nil {
-		return fmt.Errorf("failed to parse promocao private key: %w", err)
+		return nil, fmt.Errorf("failed to parse promocao private key: %w", err)
 	}
 	gatewayPublicKey, err := crypto.ParsePublicKey(gatewayPublicKeyPath)
 	if err != nil {
-		return fmt.Errorf("failed to parse gateway public key: %w", err)
+		return nil, fmt.Errorf("failed to parse gateway public key: %w", err)
 	}
 	rq, err := rabbitmq.NewRabbitMQ(rabbitMqURL)
 	if err != nil {
-		return fmt.Errorf("failed to connect to rabbitmq: %w", err)
+		return nil, fmt.Errorf("failed to connect to rabbitmq: %w", err)
 	}
 
 	if err := rq.DeclareExchangePromocoes(); err != nil {
-		return err
+		return nil, err
 	}
 
-	q, err := rq.Channel().QueueDeclare(
+	return &verificador{
+		rq:               rq,
+		privateKey:       privateKey,
+		gatewayPublicKey: gatewayPublicKey,
+	}, nil
+}
+
+func (v *verificador) Run() error {
+	q, err := v.rq.Channel().QueueDeclare(
 		"fila_promocao",
 		true,
 		false,
@@ -53,11 +67,11 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 		return fmt.Errorf("failed to declare queue: %w", err)
 	}
 
-	if err := rq.Channel().QueueBind(q.Name, "promocao.recebida", "promocoes", false, nil); err != nil {
+	if err := v.rq.Channel().QueueBind(q.Name, "promocao.recebida", "promocoes", false, nil); err != nil {
 		return fmt.Errorf("failed to bind fila_promocao queue to promocoes exchange: %w", err)
 	}
 
-	msgs, err := rq.Channel().Consume(
+	msgs, err := v.rq.Channel().Consume(
 		q.Name,
 		"",
 		false,
@@ -71,7 +85,7 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 	}
 
 	for msg := range msgs {
-		go func(msg amqp091.Delivery, privateKey *rsa.PrivateKey, gatewayPublicKey *rsa.PublicKey) {
+		go func(msg amqp091.Delivery) {
 			signature, found := msg.Headers["signature"]
 			if !found {
 				slog.Error("signature header not found")
@@ -82,7 +96,7 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 				slog.Error("failed to transform signature to bytes")
 				return
 			}
-			if err := crypto.Verify(gatewayPublicKey, msg.Body, s); err != nil {
+			if err := crypto.Verify(v.gatewayPublicKey, msg.Body, s); err != nil {
 				slog.Error("failed to verify message: " + err.Error())
 				return
 			}
@@ -94,13 +108,13 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 
 			slog.Info(fmt.Sprintf("Promocao: %+v\n", promocao))
 
-			promoSignature, err := crypto.Sign(privateKey, msg.Body)
+			promoSignature, err := crypto.Sign(v.privateKey, msg.Body)
 			if err != nil {
 				slog.Error("failed to sign message: " + err.Error())
 				return
 			}
 
-			if err := rq.Channel().Publish("promocoes", "promocao.publicada", false, false, amqp091.Publishing{
+			if err := v.rq.Channel().Publish("promocoes", "promocao.publicada", false, false, amqp091.Publishing{
 				ContentType: "application/json",
 				Body:        msg.Body,
 				Headers:     amqp091.Table{"signature": promoSignature},
@@ -113,7 +127,7 @@ func RecebePromocao(rabbitMqURL, gatewayPublicKeyPath, promocaoPrivateKeyPath st
 				slog.Error("failed to ack message: " + err.Error())
 				return
 			}
-		}(msg, privateKey, gatewayPublicKey)
+		}(msg)
 	}
 	return nil
 }

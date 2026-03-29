@@ -20,42 +20,59 @@ import (
 	"github.com/tashima42/disciplinas/CARS001/mom/promocoes/rabbitmq"
 )
 
-func Run(rabbitMqURL, gatewayPrivateKeyPath, promocaoPublicKeyPath string) error {
+type gateway struct {
+	rq                *rabbitmq.RabbitMQ
+	privateKey        *rsa.PrivateKey
+	promocaoPublicKey *rsa.PublicKey
+	scanner           *bufio.Scanner
+	mu                *sync.Mutex
+	promocoes         map[string]promocao.Promocao
+}
+
+func NewGateway(rabbitMqURL, gatewayPrivateKeyPath, promocaoPublicKeyPath string) (*gateway, error) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	rq, err := rabbitmq.NewRabbitMQ(rabbitMqURL)
 	if err != nil {
-		return fmt.Errorf("failed to connect to rabbitmq: %w", err)
+		return nil, fmt.Errorf("failed to connect to rabbitmq: %w", err)
 	}
 
 	if err := rq.DeclareExchangePromocoes(); err != nil {
-		return err
+		return nil, err
 	}
 
 	privateKey, err := crypto.ParsePrivateKey(gatewayPrivateKeyPath)
 	if err != nil {
-		return fmt.Errorf("failed to parse private key: %w", err)
+		return nil, fmt.Errorf("failed to parse private key: %w", err)
 	}
 
 	promocaoPublicKey, err := crypto.ParsePublicKey(promocaoPublicKeyPath)
 	if err != nil {
-		return fmt.Errorf("failed to parse gateway public key: %w", err)
+		return nil, fmt.Errorf("failed to parse gateway public key: %w", err)
 	}
 
-	mu := sync.Mutex{}
-	promocoes := []promocao.Promocao{}
+	return &gateway{
+		rq:                rq,
+		privateKey:        privateKey,
+		promocaoPublicKey: promocaoPublicKey,
+		scanner:           scanner,
+		mu:                &sync.Mutex{},
+		promocoes:         map[string]promocao.Promocao{},
+	}, nil
+}
 
-	q, err := rq.Channel().QueueDeclare("promocoes_verificadas", true, false, true, false, nil)
+func (g *gateway) Run() error {
+	promocoesVerificadasQueue, err := g.rq.Channel().QueueDeclare("promocoes_verificadas", true, false, true, false, nil)
 	if err != nil {
 		return errors.New("failed to declare queue: " + err.Error())
 	}
 
-	if err := rq.Channel().QueueBind(q.Name, "promocao.publicada", "promocoes", false, nil); err != nil {
+	if err := g.rq.Channel().QueueBind(promocoesVerificadasQueue.Name, "promocao.publicada", "promocoes", false, nil); err != nil {
 		return errors.New("failed to bind promocoes_verificadas queue to promocoes exchange: " + err.Error())
 	}
 
-	msgs, err := rq.Channel().Consume(
-		q.Name,
+	promocoesVerificadasChan, err := g.rq.Channel().Consume(
+		promocoesVerificadasQueue.Name,
 		"",
 		false,
 		false,
@@ -67,38 +84,8 @@ func Run(rabbitMqURL, gatewayPrivateKeyPath, promocaoPublicKeyPath string) error
 		return errors.New("failed to register consumer: " + err.Error())
 	}
 
-	go func(promocaoPublicKey *rsa.PublicKey, mu *sync.Mutex) {
-		for msg := range msgs {
-			go func(msg amqp091.Delivery, promocaoPublicKey *rsa.PublicKey, mu *sync.Mutex) {
-				signature, found := msg.Headers["signature"]
-				if !found {
-					slog.Error("signature header not found")
-					return
-				}
-				s, ok := signature.([]byte)
-				if !ok {
-					slog.Error("failed to transform signature to bytes")
-					return
-				}
-				if err := crypto.Verify(promocaoPublicKey, msg.Body, s); err != nil {
-					slog.Error("failed to verify message: " + err.Error())
-					return
-				}
-				var promocao promocao.Promocao
-				if err := json.Unmarshal(msg.Body, &promocao); err != nil {
-					slog.Error("failed to unmarshal json: " + err.Error())
-					return
-				}
+	go g.listenForVerifiedPromos(promocoesVerificadasChan)
 
-				mu.Lock()
-				defer mu.Unlock()
-
-				promocoes = append(promocoes, promocao)
-			}(msg, promocaoPublicKey, mu)
-		}
-	}(promocaoPublicKey, &mu)
-
-loop:
 	for {
 		fmt.Print("\033[H\033[2J")
 
@@ -109,54 +96,25 @@ loop:
 		fmt.Println("4 - Sair")
 		fmt.Print("\n> ")
 
-		if !scanner.Scan() {
+		if !g.scanner.Scan() {
 			break
 		}
-		input := strings.TrimSpace(scanner.Text())
+		input := strings.TrimSpace(g.scanner.Text())
 
 		switch input {
 		// cadastrar
 		case "1":
-			fmt.Print("\033[H\033[2J")
-			fmt.Println("=== Cadastrar promoção ===")
-
-			fmt.Print("Título: ")
-			if !scanner.Scan() {
-				break loop
+			if err := g.cadastrarPromocaoMenu(); err != nil {
+				fmt.Println("falha ao cadastrar promoção: " + err.Error())
 			}
-			titulo := strings.TrimSpace(scanner.Text())
-			fmt.Print("Categoria: ")
-			if !scanner.Scan() {
-				break loop
-			}
-			categoria := strings.TrimSpace(scanner.Text())
-			s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
-			s.Suffix = " cadastrando..."
-			s.Start()
-			if err := cadastrar(rq, privateKey, titulo, categoria); err != nil {
-				return err
-			}
-			s.Stop()
 		case "2":
-			fmt.Print("\033[H\033[2J")
-			fmt.Println("=== Votar em uma promoção ===")
-
-			fmt.Print("id: ")
-			if !scanner.Scan() {
-				break loop
-			}
-			id := strings.TrimSpace(scanner.Text())
-			if err := votar(rq, privateKey, id); err != nil {
-				return err
+			if err := g.votarMenu(); err != nil {
+				fmt.Println("falha ao votar na promoção: " + err.Error())
 			}
 		case "3":
-			fmt.Print("\033[H\033[2J")
-			fmt.Println("=== Listar promoções verificadas ===")
-			mu.Lock()
-			for _, promo := range promocoes {
-				fmt.Printf("%s - Titulo: %s, Categoria: %s\n", promo.ID, promo.Titulo, promo.Categoria)
+			if err := g.listPromosMenu(); err != nil {
+				fmt.Println("falha ao listar promocoes: " + err.Error())
 			}
-			mu.Unlock()
 		case "4":
 			fmt.Println("Tchau Tchau!")
 			return nil
@@ -165,25 +123,112 @@ loop:
 		}
 
 		fmt.Println("Pressione [Enter] para continuar...")
-		scanner.Scan()
+		g.scanner.Scan()
 	}
 
 	return nil
 }
 
-func cadastrar(rq *rabbitmq.RabbitMQ, privateKey *rsa.PrivateKey, titulo, categoria string) error {
+func (g *gateway) listPromosMenu() error {
+	fmt.Print("\033[H\033[2J")
+	fmt.Println("=== Listar promoções verificadas ===")
+	g.mu.Lock()
+	for _, promo := range g.promocoes {
+		fmt.Printf("%s - Titulo: %s, Categoria: %s\n", promo.ID, promo.Titulo, promo.Categoria)
+	}
+	g.mu.Unlock()
+	return nil
+}
+
+func (g *gateway) listenForVerifiedPromos(promocoesVerificadasChan <-chan amqp091.Delivery) {
+	for msg := range promocoesVerificadasChan {
+		go func(msg amqp091.Delivery) {
+			signature, found := msg.Headers["signature"]
+			if !found {
+				slog.Error("signature header not found")
+				return
+			}
+			s, ok := signature.([]byte)
+			if !ok {
+				slog.Error("failed to transform signature to bytes")
+				return
+			}
+			if err := crypto.Verify(g.promocaoPublicKey, msg.Body, s); err != nil {
+				slog.Error("failed to verify message: " + err.Error())
+				return
+			}
+			var promocao promocao.Promocao
+			if err := json.Unmarshal(msg.Body, &promocao); err != nil {
+				slog.Error("failed to unmarshal json: " + err.Error())
+				return
+			}
+
+			g.mu.Lock()
+			defer g.mu.Unlock()
+
+			g.promocoes[promocao.ID] = promocao
+		}(msg)
+	}
+}
+
+func (g *gateway) cadastrarPromocaoMenu() error {
+	fmt.Print("\033[H\033[2J")
+	fmt.Println("=== Cadastrar promoção ===")
+
+	fmt.Print("Título: ")
+	if !g.scanner.Scan() {
+		return errors.New("failed to scan")
+	}
+	titulo := strings.TrimSpace(g.scanner.Text())
+	fmt.Print("Categoria: ")
+	if !g.scanner.Scan() {
+		return errors.New("failed to scan")
+	}
+	categoria := strings.TrimSpace(g.scanner.Text())
+	s := spinner.New(spinner.CharSets[11], 100*time.Millisecond)
+	s.Suffix = " cadastrando..."
+	s.Start()
+	if err := g.cadastrar(titulo, categoria); err != nil {
+		return err
+	}
+	s.Stop()
+	return nil
+}
+
+func (g *gateway) votarMenu() error {
+	fmt.Print("\033[H\033[2J")
+	fmt.Println("=== Votar em uma promoção ===")
+
+	fmt.Print("id: ")
+	if !g.scanner.Scan() {
+		return errors.New("failed to scan")
+	}
+	id := strings.TrimSpace(g.scanner.Text())
+
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
+	promo, found := g.promocoes[id]
+	if !found {
+		return errors.New("promoção não encontrada, id: " + id)
+	}
+
+	return g.votar(promo)
+}
+
+func (g *gateway) cadastrar(titulo, categoria string) error {
 	promo := promocao.NewPromocao(titulo, categoria)
 	promoBody, err := json.Marshal(promo)
 	if err != nil {
 		return fmt.Errorf("failed to marshal promo to json: %w", err)
 	}
 
-	promoSignature, err := crypto.Sign(privateKey, promoBody)
+	promoSignature, err := crypto.Sign(g.privateKey, promoBody)
 	if err != nil {
 		return fmt.Errorf("failed to sign message: %w", err)
 	}
 
-	if err := rq.Channel().Publish("promocoes", "promocao.recebida", false, false, amqp091.Publishing{
+	if err := g.rq.Channel().Publish("promocoes", "promocao.recebida", false, false, amqp091.Publishing{
 		ContentType: "application/json",
 		Body:        promoBody,
 		Headers:     amqp091.Table{"signature": promoSignature},
@@ -194,23 +239,23 @@ func cadastrar(rq *rabbitmq.RabbitMQ, privateKey *rsa.PrivateKey, titulo, catego
 	return nil
 }
 
-func votar(rq *rabbitmq.RabbitMQ, privateKey *rsa.PrivateKey, id string) error {
-	if err := rq.DeclareExchangePromocoes(); err != nil {
-		return err
+func (g *gateway) votar(promo promocao.Promocao) error {
+	promoBody, err := json.Marshal(promo)
+	if err != nil {
+		return fmt.Errorf("failed to marshal promo to json: %w", err)
 	}
 
-	promoSignature, err := crypto.Sign(privateKey, []byte(id))
+	promoSignature, err := crypto.Sign(g.privateKey, promoBody)
 	if err != nil {
 		return fmt.Errorf("failed to sign message: %w", err)
 	}
 
-	if err := rq.Channel().Publish("promocoes", "promocao.voto", false, false, amqp091.Publishing{
-		ContentType: "text/plain",
-		Body:        []byte(id),
+	if err := g.rq.Channel().Publish("promocoes", "promocao.voto", false, false, amqp091.Publishing{
+		ContentType: "application/json",
+		Body:        promoBody,
 		Headers:     amqp091.Table{"signature": promoSignature},
 	}); err != nil {
 		return fmt.Errorf("failed to publish message to exchange: %w", err)
 	}
-
 	return nil
 }
