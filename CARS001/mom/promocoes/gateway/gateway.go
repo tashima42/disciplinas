@@ -67,6 +67,7 @@ func (g *gateway) Run() error {
 		return errors.New("failed to declare queue: " + err.Error())
 	}
 
+	// Esse serviço consome os eventos promocao.publicada e mantém uma lista local de promoções validadas, permitindo que os usuários listem apenas promoções já aprovadas pelo microsserviço Promocao.
 	if err := g.rq.Channel().QueueBind(promocoesVerificadasQueue.Name, "promocao.publicada", "promocoes", false, nil); err != nil {
 		return errors.New("failed to bind queue to promocoes exchange: " + err.Error())
 	}
@@ -223,11 +224,13 @@ func (g *gateway) cadastrar(titulo, categoria string) error {
 		return fmt.Errorf("failed to marshal promo to json: %w", err)
 	}
 
+	// (0,1) Sempre que um evento for publicado, o gateway deve gerar a assinatura digital da mensagem utilizando sua chave privada e incluí-la no envelope do evento.
 	promoSignature, err := crypto.Sign(g.privateKey, promoBody)
 	if err != nil {
 		return fmt.Errorf("failed to sign message: %w", err)
 	}
 
+	// O gateway publica eventos promocao.recebida, promocao.voto.
 	if err := g.rq.Channel().Publish("promocoes", "promocao.recebida", false, false, amqp091.Publishing{
 		ContentType: "application/json",
 		Body:        promoBody,
@@ -245,11 +248,13 @@ func (g *gateway) votar(promo promocao.Promocao) error {
 		return fmt.Errorf("failed to marshal promo to json: %w", err)
 	}
 
+	// (0,1) Sempre que um evento for publicado, o gateway deve gerar a assinatura digital da mensagem utilizando sua chave privada e incluí-la no envelope do evento.
 	promoSignature, err := crypto.Sign(g.privateKey, promoBody)
 	if err != nil {
 		return fmt.Errorf("failed to sign message: %w", err)
 	}
 
+	// O gateway publica eventos promocao.recebida, promocao.voto.
 	if err := g.rq.Channel().Publish("promocoes", "promocao.voto", false, false, amqp091.Publishing{
 		ContentType: "application/json",
 		Body:        promoBody,

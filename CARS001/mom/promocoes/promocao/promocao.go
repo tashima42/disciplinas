@@ -67,6 +67,7 @@ func (v *verificador) Run() error {
 		return fmt.Errorf("failed to declare queue: %w", err)
 	}
 
+	// Esse serviço recebe eventos indicando que novas promoções foram recebidas.
 	if err := v.rq.Channel().QueueBind(q.Name, "promocao.recebida", "promocoes", false, nil); err != nil {
 		return fmt.Errorf("failed to bind fila_promocao queue to promocoes exchange: %w", err)
 	}
@@ -84,6 +85,11 @@ func (v *verificador) Run() error {
 		return fmt.Errorf("failed to register consumer: %w", err)
 	}
 
+	// Ao receber um evento, o serviço deve inicialmente validar a assinatura digital da mensagem para garantir sua
+	// autenticidade e integridade. Quando um evento de promoção é validado, o serviço registra
+	// a promoção, assina e publica um novo evento informando que a promoção foi
+	// disponibilizada no sistema.
+	// O microsserviço Promocao consome os eventos promocao.recebida, assina digitalmente e publica eventos promocao.publicada.
 	for msg := range msgs {
 		go func(msg amqp091.Delivery) {
 			signature, found := msg.Headers["signature"]
