@@ -104,3 +104,16 @@ valor <- modularity(comunidade)
 #matriz <- modularity_matrix(comunidade)
 plot(comunidade, grafo)
 ```
+
+Comunidade e modularidade
+
+```{r}
+g_karate <- make_graph("Zachary")
+com <- cluster_walktrap(g_karate)
+membership(com)
+modularity(com)
+plot(com, g_karate)
+com <- cluster_edge_betweenness(g_karate)
+membership(com)
+modularity(com)
+```
